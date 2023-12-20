@@ -9,7 +9,7 @@
 
 using namespace std;
 
-const double pi = 3.14159265;
+const double pi = 3.1415926535898; // 精度有问题，重新增加了几位pi
 
 double NormalGeometry(int r) // 欧式几何的计算公式为 pi * r * r
 {
