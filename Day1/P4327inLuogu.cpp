@@ -9,7 +9,7 @@
 
 using namespace std;
 
-void PrintFirstLayer(string str, int len)
+void PrintFirstLayer(int len)
 {
     // 第一行和第五行由..#..构成，如果有多个字母每个#或者*后面要加...
     cout << ".."; // 首部
@@ -31,7 +31,7 @@ void PrintFirstLayer(string str, int len)
     cout << ".." << endl; // 尾部
 }
 
-void PrintSceondLayer(string str, int len)
+void PrintSceondLayer(int len)
 {
     // 第二部分和第四部分.#.#.，一个字母有两个#或者*。
     cout << "."; // 首部
@@ -53,9 +53,9 @@ void SpecialPrint(string str)
 {
     int len = str.length();
 
-    PrintFirstLayer(str, len);
+    PrintFirstLayer(len);
 
-    PrintSceondLayer(str, len);
+    PrintSceondLayer(len);
 
     // 第三部分有点复杂，可以先看成#.A这种格式，不过第四个和尾部需要判断一下。
     for (int i = 1; i <= len; i++)
@@ -78,9 +78,9 @@ void SpecialPrint(string str)
         cout << "#" << endl;
     }
 
-    PrintSceondLayer(str, len); // 第四层和第二层一样
+    PrintSceondLayer(len); // 第四层和第二层一样
 
-    PrintFirstLayer(str, len); // 第五层和第一层一样
+    PrintFirstLayer(len); // 第五层和第一层一样
 }
 
 int main()
