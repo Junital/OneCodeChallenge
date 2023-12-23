@@ -9,8 +9,8 @@
 
 using namespace std;
 
-int N;              // 序列中包含的数字个数
-int nums[11] = {0}; // 记录每个数字是否被使用，0为未使用，1为使用
+int N;               // 序列中包含的数字个数
+int nums[105] = {0}; // 记录每个数字是否被使用，0为未使用，1为使用
 
 /* 输出为一个数的阶乘，比如2!=2*1=2 */
 int multiX(int x)
@@ -74,6 +74,7 @@ void StrCalDict(string str)
         }
 
         nums[current_num] = 1; // 每次结束记得标注该位被使用了
+        // cout << i << " " << before_num << endl;
     }
 
     cout << before_num + 1 << endl; // 当前的序列编号就是比它字典序小的序列数 + 1
