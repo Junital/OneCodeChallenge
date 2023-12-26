@@ -1,3 +1,3 @@
 # OneCodeChangllenge
 
-Try to code Luogu or Newcoder in one $\times 6$ days.
+Try to code Luogu or Newcoder in one $\times 7$ days.
