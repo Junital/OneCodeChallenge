@@ -10,16 +10,17 @@
 using namespace std;
 
 #define rep(i, s, k) for (int i = s; i <= k; i++) // 快速循环
-#define ll long long
+#define ll long long                              // 定义long long
+#define DIGITNUM 10                               // 定义数码的数字数量为10
 
 /* 计算数字的长度，如123长度为3 */
 int CalNumSize(int Num)
 {
-    const int base = 10; // 不断扩大，试探待测数据
-    int size = 1;        // 最后的结果
-    while (Num >= base)
+    ll base = DIGITNUM; // 不断扩大，试探待测数据 设为long long，因为会溢出
+    int size = 1;       // 最后的结果
+    while (Num >= base) // 这里应该>=，粗心了
     {
-        base *= 10;
+        base *= DIGITNUM;
         size++;
     }
     return size;
@@ -31,8 +32,8 @@ vector<ll> SingleNumStast(int Num)
     /* 思路：获取数字的每一位，进行统计。*/
     int NumSize = CalNumSize(Num); // 计算位数
 
-    int base = 10;
-    vector<ll> NumStast(10, 0);
+    const int base = DIGITNUM;
+    vector<ll> NumStast(DIGITNUM, 0);
 
     rep(i, 1, NumSize)
     {
@@ -47,19 +48,18 @@ vector<ll> SingleNumStast(int Num)
 /* 统计一个区间内的数字。 */
 void IntervalNumStast(int SmallNum, int LargeNum)
 {
-    vector<ll> NumStast(10, 0); // 统计数组
+    vector<ll> NumStast(DIGITNUM, 0); // 统计数组
 
     rep(i, SmallNum, LargeNum)
     {
         vector<ll> SingNumStast = SingleNumStast(i);
-
-        rep(j, 0, 9)
+        rep(j, 0, DIGITNUM - 1)
         {
             NumStast[j] += SingNumStast[j];
         }
     }
 
-    rep(i, 0, 9)
+    rep(i, 0, DIGITNUM - 1)
     {
         cout << NumStast[i] << " ";
     }
