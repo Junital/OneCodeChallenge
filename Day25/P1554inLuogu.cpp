@@ -15,9 +15,9 @@ using namespace std;
 /* 计算数字的长度，如123长度为3 */
 int CalNumSize(int Num)
 {
-    int base = 10; // 不断扩大，试探待测数据
-    int size = 1;  // 最后的结果
-    while (Num > base)
+    const int base = 10; // 不断扩大，试探待测数据
+    int size = 1;        // 最后的结果
+    while (Num >= base)
     {
         base *= 10;
         size++;
