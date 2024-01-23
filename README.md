@@ -1,8 +1,8 @@
 # OneCodeChangllenge
 
-Try to code Luogu, Nowcoder and LeetCoder in one $\times 30$ days.
+Try to code Luogu, Nowcoder and LeetCoder in one $\times 31$ days.
 
-- Easy Problems: [Day1-10](./Day1-10/), [Day11-20](./Day11-20/).
+- Easy Problems: [Day1-10](./Day1-10/), [Day11-20](./Day11-20/), [Day21-30](./Day21-30/).
 
 Here are some problems which I attached solving pictures:
 
