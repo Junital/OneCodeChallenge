@@ -40,6 +40,7 @@ public:
         {
             double infect = ceil(InfectRate * Suscept * Infect); // 感染人数
             double recover = ceil(RecoverRate * Infect);         // 治愈人数
+            infect = min(infect, (double)Suscept);
 
             /* 治愈人数转换 */
             Recover += recover;
