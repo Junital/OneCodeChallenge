@@ -29,7 +29,7 @@ public:
     /* 输入个数，返回前n个项之和。 */
     ll getSum(int n)
     {
-        ll item = start; // 暂时存放每一项（可能会溢出）
+        ll item = start; // 暂时存放每一项（可能会溢出，第二次AC）
         ll sum = 0;      // 记录求和
 
         for (int i = 1; i <= n; i++)
