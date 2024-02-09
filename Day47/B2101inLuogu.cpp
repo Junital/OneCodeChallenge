@@ -49,6 +49,8 @@ public:
     {
         ll Sum = 0;
 
+        /* 要注意到只有1行1列的情况。 */
+
         /* 第一行 */
         rep(j, 0, ColNum - 1)
         {
@@ -63,9 +65,12 @@ public:
         }
 
         /* 最后一行 */
-        rep(j, 0, ColNum - 1)
+        if (RowNum - 1 != 0)
         {
-            Sum += Elements[RowNum - 1][j];
+            rep(j, 0, ColNum - 1)
+            {
+                Sum += Elements[RowNum - 1][j];
+            }
         }
 
         return Sum;
