@@ -24,6 +24,14 @@ private:
     ll at(int floor)
     {
         ll sum = 0;
+        for (auto e : Floors)
+        {
+            if (e == floor)
+            {
+                sum += 1;
+            }
+        }
+        return sum;
     }
 
 public:
@@ -54,10 +62,11 @@ public:
             RunTime += 6;
 
             CurrentFloor++;
-            if (Floors[CurrentFloor] != 0)
+            ll FloorNum = at(CurrentFloor);
+            if (FloorNum != 0)
             {
                 RunTime += 5;
-                RunTime += Floors[CurrentFloor];
+                RunTime += FloorNum;
             }
         } while (CurrentFloor != MaxFloor);
 
