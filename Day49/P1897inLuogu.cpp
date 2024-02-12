@@ -17,22 +17,8 @@ class Elevator
 {
 private:
     int PeoNum;
-    vector<int> Floors; // 每个人想去的楼层数
-    int MaxFloor;       // 想去的最高楼层
-
-    /* 统计到达某一楼层的个数 */
-    ll at(int floor)
-    {
-        ll sum = 0;
-        for (auto e : Floors)
-        {
-            if (e == floor)
-            {
-                sum += 1;
-            }
-        }
-        return sum;
-    }
+    map<int, int> Floors; // 每个楼层要去的人数
+    int MaxFloor;         // 想去的最高楼层
 
 public:
     /* 初始化，输入想上电梯的人数。 */
@@ -44,7 +30,7 @@ public:
         {
             int x;
             cin >> x;
-            Floors.push_back(x);
+            Floors[x]++;
 
             MaxFloor = max(MaxFloor, x);
         }
@@ -57,18 +43,16 @@ public:
         ll RunTime = 0;       // 目前电梯的运行时间
 
         /* 上楼过程 */
-        do
+        for (auto p : Floors)
         {
-            RunTime += 6;
+            int floor = p.first;   // 楼层数
+            int people = p.second; // 人数
 
-            CurrentFloor++;
-            ll FloorNum = at(CurrentFloor);
-            if (FloorNum != 0)
-            {
-                RunTime += 5;
-                RunTime += FloorNum;
-            }
-        } while (CurrentFloor != MaxFloor);
+            RunTime += (ll)6 * (floor - CurrentFloor);
+            RunTime += ((ll)5 + people);
+
+            CurrentFloor = floor;
+        }
 
         /* 下楼过程 */
         RunTime += (ll)4 * MaxFloor;
