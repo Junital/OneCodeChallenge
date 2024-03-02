@@ -11,12 +11,13 @@
 using namespace std;
 
 #define rep(i, s, k) for (int i = s; i <= k; i++) // 定义快速循环
+#define ll long long                              // 定义长整型
 
 class ScoreModel
 {
 private:
-    double FullScoreSum; // 各科满分总和
-    double SelfScoreSum; // 个人成绩总分
+    ll FullScoreSum; // 各科满分总和
+    ll SelfScoreSum; // 个人成绩总分
 
 public:
     /* 初始化，输入科目数量。 */
@@ -27,14 +28,14 @@ public:
 
         rep(i, 1, SubNum)
         {
-            double score;
+            ll score;
             cin >> score;
             FullScoreSum += score;
         }
 
         rep(i, 1, SubNum)
         {
-            double score;
+            ll score;
             cin >> score;
             SelfScoreSum += score;
         }
@@ -43,9 +44,11 @@ public:
     /* 获得综合分数。 */
     double getAggreScore()
     {
-        double LackScoreSum = FullScoreSum - SelfScoreSum;
+        ll LackScoreSum = FullScoreSum - SelfScoreSum;
 
-        return (FullScoreSum * 3 - SelfScoreSum * 2) / LackScoreSum;
+        double top = FullScoreSum * 3 - SelfScoreSum * 2;
+
+        return top / LackScoreSum;
     }
 };
 
