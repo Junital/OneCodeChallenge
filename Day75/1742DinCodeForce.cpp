@@ -34,7 +34,7 @@ private:
         int MaxValue = -1; // 答案
         int MaxSum = 2 * ArrSize;
 
-        per(sum, MaxSum, 2)
+        per(sum, MaxSum, MaxSum / 2) // 再砍了一半，不知道会不会有问题。
         {
             int maxi = min(ArrSize, sum - 1);
             int mini = (sum + 1) / 2;
