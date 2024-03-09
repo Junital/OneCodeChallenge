@@ -41,6 +41,10 @@ private:
             {
                 int j = sum - i;
                 // cout << i << " " << j << endl;
+                if (Arr[i - 1] == Arr[j - 1] && Arr[i - 1] != 1)
+                {
+                    continue;
+                }
                 if (gcd(Arr[i - 1], Arr[j - 1]) == 1)
                 {
                     if (MaxValue == -1)
