@@ -36,7 +36,7 @@ private:
 
         per(sum, MaxSum, 2 * 1)
         {
-            per(i, ArrSize, sum - ArrSize)
+            per(i, min(ArrSize, sum - 1), sum - ArrSize) // 这里微调一下
             {
                 int j = sum - i;
                 // cout << i << " " << j << endl;
