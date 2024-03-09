@@ -34,10 +34,11 @@ private:
         int MaxValue = -1; // 答案
         int MaxSum = 2 * ArrSize;
 
-        per(sum, MaxSum, 2 * 1)
+        per(sum, MaxSum, 2)
         {
             int maxi = min(ArrSize, sum - 1);
-            per(i, maxi, (sum + 1) / 2) // 这里微调一下
+            int mini = (sum + 1) / 2;
+            per(i, maxi, mini) // 这里微调一下
             {
                 int j = sum - i;
                 // cout << i << " " << j << endl;
@@ -45,7 +46,7 @@ private:
                 {
                     continue;
                 }
-                if (gcd(Arr[i - 1], Arr[j - 1]) == 1)
+                if (gcd(Arr[j - 1], Arr[i - 1] % Arr[j - 1]) == 1)
                 {
                     if (MaxValue == -1)
                     {
