@@ -1,7 +1,7 @@
 /***********************************************
  * 题目：Coprime
  * 描述：输入的数字最大公约数必须是1，然后找到每个数组值最大的一对。
- * 思路：数论。
+ * 思路：数论，可以用数字<=1000的限制来完成。
  * 对象：Coprime用于模拟并计算。
  * 注意：事件上的限制。
  ***********************************************/
@@ -17,6 +17,7 @@ class Coprime
 {
 private:
     int T;
+    const int MaxNum = 1000;
 
     inline int gcd(int x, int y)
     {
@@ -27,35 +28,22 @@ private:
         return gcd(y, x % y);
     }
 
-    /* 先输入一个数组，然后通过遍历找到值最大的组合。 */
-    int search_cal(vector<int> Arr)
+    /* 先输入一个map，然后通过遍历找到值最大的组合。 */
+    int search_cal(map<int, int> NumIdx)
     {
-        int ArrSize = Arr.size();
         int MaxValue = -1; // 答案
-        int MaxSum = 2 * ArrSize;
 
-        per(sum, MaxSum, MaxSum / 2) // 再砍了一半，不知道会不会有问题。
+        for (auto ni : NumIdx)
         {
-            int maxi = min(ArrSize, sum - 1);
-            int mini = (sum + 1) / 2;
-            per(i, maxi, mini) // 这里微调一下
+            for (auto nj : NumIdx)
             {
-                int j = sum - i;
-                // cout << i << " " << j << endl;
-                if (Arr[i - 1] == Arr[j - 1] && Arr[i - 1] != 1)
+                if (gcd(ni.first, nj.first) == 1)
                 {
-                    continue;
-                }
-                if (gcd(Arr[j - 1], Arr[i - 1] % Arr[j - 1]) == 1)
-                {
-                    if (MaxValue == -1)
-                    {
-                        MaxValue = i + j;
-                        return MaxValue;
-                    }
+                    MaxValue = max(MaxValue, ni.second + nj.second);
                 }
             }
         }
+
         return MaxValue;
     }
 
@@ -65,18 +53,20 @@ public:
     {
         rep(i, 1, T)
         {
-            int arrsize;
-            vector<int> arr;
+            int size;
+            map<int, int> numidx;
+            cin >> size;
 
-            cin >> arrsize;
-            arr.resize(arrsize);
-
-            rep(j, 0, arrsize - 1)
+            rep(j, 1, size)
             {
-                cin >> arr[j];
+                int num;
+
+                cin >> num;
+
+                numidx[num] = max(numidx[num], j);
             }
 
-            cout << search_cal(arr) << endl; // 搜索并计算最大的值。
+            cout << search_cal(numidx) << endl; // 搜索并计算最大的值。
         }
     }
 };
