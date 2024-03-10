@@ -1,4 +1,4 @@
-# OneCodeChangllenge
+# OneCodeChallenge
 
 Try to code problems in CodeForce, Luogu, Nowcoder and LeetCoder for $\times 75$ days.
 
