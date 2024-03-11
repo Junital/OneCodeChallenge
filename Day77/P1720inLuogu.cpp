@@ -13,9 +13,14 @@ using namespace std;
 #define rep(i, s, k) for (int i = s; i <= k; i++) // 定义快速循环
 #define ll long long                              // 定义长整型
 
-int Fibonacci(int Idx)
+ll Fibonacci(int Idx)
 {
-    vector<int> NumSeq;
+    if (Idx == 0)
+    {
+        return 0;
+    }
+
+    vector<ll> NumSeq;
     NumSeq.push_back(1);
     NumSeq.push_back(1);
 
