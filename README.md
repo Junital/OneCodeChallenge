@@ -1,6 +1,6 @@
 # OneCodeChallenge
 
-Try to code problems in CodeForce, Luogu, Nowcoder and LeetCoder for $\times 78$ days.
+Try to code problems in CodeForce, Luogu, Nowcoder and LeetCoder for $\times 79$ days.
 
 - Easy Problems: [Day1-10](./Day1-10/), [Day11-20](./Day11-20/), [Day21-30](./Day21-30/), [Day31-40](./Day31-40/), [Day41-50](./Day41-50/), [Day51-60](./Day51-60/), [Day61-70](./Day61-70/).
 
