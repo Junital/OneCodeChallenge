@@ -24,6 +24,7 @@ public:
         {
             if (Distance % i == 0)
             {
+                // cout << Distance / i << endl;
                 q.push(Distance / i);
             }
         }
@@ -37,6 +38,7 @@ public:
             if (element == 0)
             {
                 Days++;
+                // cout << "Day " << Days << endl;
                 if (q.empty()) // 判断目前是否还有元素可以进入下一轮
                 {
                     break;
@@ -50,16 +52,9 @@ public:
             {
                 continue;
             }
-            else if (element - 1 <= 10)
+            else if (element - 1 <= 9)
             {
-                if (Days == 1)
-                {
-                    continue;
-                }
-                else
-                {
-                    return Days;
-                }
+                return Days;
             }
             else
             {
@@ -68,7 +63,7 @@ public:
                 {
                     if (element % i == 0)
                     {
-                        // cout << i << endl;
+                        // cout << element / i << endl;
                         q.push(element / i);
                     }
                 }
