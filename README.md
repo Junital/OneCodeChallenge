@@ -14,3 +14,4 @@ Here are some problems which I attached solving pictures:
 |[P2907 Luogu](https://www.luogu.com.cn/problem/P2907)|![P2907 Solve](./Day61-70/Day66/Solve.svg)|
 |[P5713 Luogu](https://www.luogu.com.cn/problem/P5713)|![P5713 Solve](./Day61-70/Day69/Solve.svg)|
 |[P5720 Luogu](https://www.luogu.com.cn/problem/P5720)|![P5720 Solve](./Day71-80/Day71/Solve.svg)|
+|[P2064 Luogu](https://www.luogu.com.cn/problem/P52064)|![P2064 Solve](./Day88/P2064%20Solve.svg)|
