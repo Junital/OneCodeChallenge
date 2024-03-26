@@ -1,8 +1,8 @@
 # OneCodeChallenge
 
-Try to code problems in CodeForce, Luogu, Nowcoder and LeetCoder for $\times 90$ days.
+Try to code problems in CodeForce, Luogu, Nowcoder and LeetCoder for $\times 91$ days.
 
-- Easy Problems: [Day1-10](./Day1-10/), [Day11-20](./Day11-20/), [Day21-30](./Day21-30/), [Day31-40](./Day31-40/), [Day41-50](./Day41-50/), [Day51-60](./Day51-60/), [Day61-70](./Day61-70/), [Day71-80](./Day71-80/).
+- Easy Problems: [Day1-10](./Day1-10/), [Day11-20](./Day11-20/), [Day21-30](./Day21-30/), [Day31-40](./Day31-40/), [Day41-50](./Day41-50/), [Day51-60](./Day51-60/), [Day61-70](./Day61-70/), [Day71-80](./Day71-80/), [Day81-90](./Day81-90/).
 
 Here are some problems which I attached solving pictures:
 
@@ -14,4 +14,4 @@ Here are some problems which I attached solving pictures:
 |[P2907 Luogu](https://www.luogu.com.cn/problem/P2907)|![P2907 Solve](./Day61-70/Day66/Solve.svg)|
 |[P5713 Luogu](https://www.luogu.com.cn/problem/P5713)|![P5713 Solve](./Day61-70/Day69/Solve.svg)|
 |[P5720 Luogu](https://www.luogu.com.cn/problem/P5720)|![P5720 Solve](./Day71-80/Day71/Solve.svg)|
-|[P2064 Luogu](https://www.luogu.com.cn/problem/P52064)|![P2064 Solve](./Day88/P2064%20Solve.svg)|
+|[P2064 Luogu](https://www.luogu.com.cn/problem/P52064)|![P2064 Solve](./Day81-90/Day88/P2064%20Solve.svg)|
