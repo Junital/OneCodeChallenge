@@ -86,22 +86,38 @@ public:
 
             while (1)
             {
+                int WaitNum = 0;
+                rep(j, 1, Num)
+                {
+                    if (Wait[j])
+                    {
+                        WaitNum++;
+                    }
+                }
+
+                if (WaitNum == 1)
+                {
+                    cout << endl;
+                    break;
+                }
+
                 ll MinWeight = MaxNum;
                 int MinIdx = -1;
                 vector<ll> W(Num + 1, 0);
-                rep(i, 1, Num)
+                rep(k, 1, Num)
                 {
-                    if (Wait[i])
+                    if (Wait[k])
                     {
                         stack<int> sons; // 存储子节点编号
-                        sons.push(i);
+                        sons.push(k);
 
                         while (!sons.empty())
                         {
                             int idx = sons.top();
+                            // cout << idx << " test" << endl;
                             sons.pop();
 
-                            W[i] += Weighs[idx];
+                            W[k] += Weighs[idx];
 
                             if (Son[idx].size() > 0)
                             {
@@ -115,15 +131,19 @@ public:
                             }
                         }
 
-                        ll w = abs(ws - W[i] - W[i]);
+                        ll w = abs(ws - W[k] - W[k]);
+
+                        // cout << w << " ";
 
                         if (w < MinWeight)
                         {
-                            MinIdx = i;
+                            MinIdx = k;
                             MinWeight = w;
                         }
                     }
                 }
+
+                // cout << endl;
 
                 cout << MinIdx << " ";
 
@@ -153,12 +173,12 @@ public:
                         }
                     }
 
-                    rep(i, 1, Num)
+                    rep(j, 1, Num)
                     {
-                        if (Wait[i] && live.count(i) == 0)
+                        if (Wait[j] && live.count(j) == 0)
                         {
-                            ws -= Weighs[i];
-                            Wait[i] = false;
+                            ws -= Weighs[j];
+                            Wait[j] = false;
                         }
                     }
                 }
@@ -177,27 +197,12 @@ public:
 
                         if (Son[idx].size() > 0)
                         {
-                            for (auto i : Son[idx])
+                            for (auto j : Son[idx])
                             {
-                                perish.push(i);
+                                perish.push(j);
                             }
                         }
                     }
-                }
-
-                int WaitNum = 0;
-                rep(j, 1, Num)
-                {
-                    if (Wait[j])
-                    {
-                        WaitNum++;
-                    }
-                }
-
-                if (WaitNum == 1)
-                {
-                    cout << endl;
-                    break;
                 }
             }
         }
