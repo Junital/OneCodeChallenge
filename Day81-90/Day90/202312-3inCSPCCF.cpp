@@ -23,7 +23,7 @@ private:
     vector<vector<int>> Son; // 子节点
     ll WeighSum;             // 权重之和
 
-    const ll MaxNum = 20000000010; // 最大值
+    const ll MaxNum = (ll)1 << 60; // 最大值
 
     void FatherToSon()
     {
@@ -55,8 +55,8 @@ public:
     /* 初始化，输入结点数 */
     QueryTree(int num) : Num(num)
     {
-        Weighs.resize(Num + 1);
-        Father.resize(Num + 1);
+        Weighs.resize(Num + 1, 0);
+        Father.resize(Num + 1, 0);
         WeighSum = 0;
 
         rep(i, 1, Num)
@@ -101,16 +101,19 @@ public:
                     break;
                 }
 
+                // cout << MaxNum << endl;
                 ll MinWeight = MaxNum;
                 int MinIdx = -1;
                 vector<ll> W(Num + 1, 0);
+
+                /* 找到权重差最小的编号。 */
                 rep(k, 1, Num)
                 {
                     if (Wait[k])
                     {
+                        /* 将现有子节点和自己的权重求和 */
                         stack<int> sons; // 存储子节点编号
                         sons.push(k);
-
                         while (!sons.empty())
                         {
                             int idx = sons.top();
@@ -199,7 +202,10 @@ public:
                         {
                             for (auto j : Son[idx])
                             {
-                                perish.push(j);
+                                if (Wait[j])
+                                {
+                                    perish.push(j);
+                                }
                             }
                         }
                     }
