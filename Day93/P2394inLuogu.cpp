@@ -10,18 +10,20 @@
 
 using namespace std;
 
-#define ld long double // 定义长浮点
+#define ld long double // 定义高精度浮点
 
-double NaH2(double Na)
+ld NaH2(ld Na)
 {
-    return Na / 23;
+    return Na / (ld)23;
 }
 
 int main()
 {
     ld na;
-    cin >> na;
+    scanf("%15Lf", &na); // 读取数据的时候，只读取15位
 
-    cout << fixed << setprecision(8) << NaH2(na) << endl;
+    // cout << na << endl;
+
+    printf("%.8Lf", NaH2(na));
     return 0;
 }
