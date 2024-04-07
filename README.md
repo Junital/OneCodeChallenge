@@ -1,6 +1,6 @@
 # OneCodeChallenge
 
-Try to code problems in CodeForce, Luogu, Nowcoder and LeetCoder for $\times 102$ days.
+Try to code problems in CodeForce, Luogu, Nowcoder and LeetCoder for $\times 103$ days.
 
 - Easy Problems: [Day1-100](./Day1-100/).
 - Sticky Problems: [CodeForce 1742D](./Day1-100/Day71-80/Day75/1742DinCodeForce.cpp).
