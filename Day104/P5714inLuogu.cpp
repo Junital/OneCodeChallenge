@@ -43,4 +43,6 @@ int main()
     {
         cout << "Normal" << endl;
     }
+
+    return 0;
 }
