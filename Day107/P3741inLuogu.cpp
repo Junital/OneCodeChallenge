@@ -26,15 +26,15 @@ private:
 
         rep(i, 0, StrLen - 1)
         {
-            if (Str[i] == 'V' && Str[i + 1] == 'K')
+            if (str[i] == 'V' && str[i + 1] == 'K')
             {
                 Num++;
             }
-            else if (Str[i] == 'V' && i + 1 <= StrLen - 1 && Str[i + 1] != 'K')
+            else if (str[i] == 'V' && i + 1 <= StrLen - 1 && str[i + 1] != 'K')
             {
                 canChange = true;
             }
-            else if (Str[i] == 'K' && i - 1 >= 0 && Str[i - 1] != 'V')
+            else if (str[i] == 'K' && i - 1 >= 0 && str[i - 1] != 'V')
             {
                 canChange = true;
             }
@@ -56,15 +56,17 @@ private:
 
             if (idx == -1)
             {
-                canChange = canChange | check(Str.substr(pos));
+                // cout << check(Str.substr(pos)) << endl;
+                canChange = canChange || check(Str.substr(pos));
+                // cout << canChange << endl;
 
-                return;
+                break;
             }
 
             VKNum++;
             if (idx > pos)
             {
-                canChange = canChange | check(Str.substr(pos, idx - pos));
+                canChange = canChange || check(Str.substr(pos, idx - pos));
             }
 
             pos = idx + 2;
@@ -92,11 +94,10 @@ public:
 
 int main()
 {
-    string strlen;
+    int strlen;
     string str;
 
-    getline(cin, strlen);
-    getline(cin, str);
+    cin >> strlen >> str;
 
     VKString vks(str);
 
