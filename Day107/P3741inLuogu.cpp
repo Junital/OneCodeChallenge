@@ -1,7 +1,7 @@
 /***********************************************
  * 题目：小果的键盘
  * 描述：最多改变一个字符，使得某个字符串中VK数量最多。
- * 思路：一次遍历。
+ * 思路：一次遍历不合理，尝试使用切割法。
  * 对象：VKString模拟含VK的字符串。
  * 注意：无。
  ***********************************************/
@@ -18,17 +18,17 @@ private:
     string Str;
     int VKNum;
 
-    void check()
+    bool check(string str)
     {
-        int StrLen = Str.size();
-        VKNum = 0;
+        int StrLen = str.size();
+        int Num = 0;
         bool canChange = false; // 可以将某个字符进行替换
 
         rep(i, 0, StrLen - 1)
         {
             if (Str[i] == 'V' && Str[i + 1] == 'K')
             {
-                VKNum++;
+                Num++;
             }
             else if (Str[i] == 'V' && i + 1 <= StrLen - 1 && Str[i + 1] != 'K')
             {
@@ -38,6 +38,36 @@ private:
             {
                 canChange = true;
             }
+        }
+
+        return canChange;
+    }
+
+    void init()
+    {
+        int pos = 0;
+        bool canChange = false;
+        VKNum = 0;
+        int StrLen = Str.size();
+
+        while (pos < StrLen)
+        {
+            int idx = Str.find("VK", pos);
+
+            if (idx == -1)
+            {
+                canChange = canChange | check(Str.substr(pos));
+
+                return;
+            }
+
+            VKNum++;
+            if (idx > pos)
+            {
+                canChange = canChange | check(Str.substr(pos, idx - pos));
+            }
+
+            pos = idx + 2;
         }
 
         if (canChange)
@@ -50,7 +80,7 @@ public:
     /* 初始化输入一个字符串。 */
     VKString(string str) : Str(str)
     {
-        check();
+        init();
     }
 
     /* 获得VK的数量。 */
