@@ -62,11 +62,10 @@ public:
 
 int main()
 {
-    int strlen;
+    string strlen;
     string str;
 
-    cin >> strlen;
-    getchar();
+    getline(cin, strlen);
     getline(cin, str);
 
     VKString vks(str);
