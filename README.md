@@ -1,6 +1,6 @@
 # OneCodeChallenge
 
-Hi, I'm Junital. This repository is designed for challenging myself, in which I will try to code problems in CodeForce, Luogu, Nowcoder and LeetCoder everyday. Now I have coded for $\times 109$ days.
+Hi, I'm Junital. This repository is designed for challenging myself, in which I will try to code problems in CodeForce, Luogu, Nowcoder and LeetCoder everyday. Now I have coded for $\times 110$ days.
 
 - Easy Problems: [Day1-100](./Day1-100/).
 - Medium Problems：[P2064](./Day1-100/Day81-90/Day88/P1319inLuogu.cpp)
@@ -18,3 +18,4 @@ Here are some problems which I attached solving pictures:
 |[P5720 Luogu](https://www.luogu.com.cn/problem/P5720)|![P5720 Solve](./Day1-100/Day71-80/Day71/Solve.svg)|
 |[P2064 Luogu](https://www.luogu.com.cn/problem/P2064)|![P2064 Solve](./Day1-100/Day81-90/Day88/P2064%20Solve.svg)|
 |[P4702 Luogu](https://www.luogu.com.cn/problem/P4702)|![P4702 Solve](./Day108/P4702%20Solve.svg)|
+|[P1614 Luogu](https://www.luogu.com.cn/problem/P1614)|![P1614 Solve](./Day110/P1614%20Solve.svg)|
