@@ -15,9 +15,9 @@ using namespace std;
 class CompressCode
 {
 private:
-    string Matrix;         // 点阵
-    int Cnt;               // 压缩码大小
-    const int StartCh = 0; // 开始字符为0
+    string Matrix;               // 点阵
+    int Cnt;                     // 压缩码大小
+    const bitset<1> StartCh = 0; // 开始字符为0
 
 public:
     /* 直接开始输入。 */
@@ -46,7 +46,8 @@ public:
 
         Code.push_back(Cnt);
 
-        if (Matrix[i] - '0' != StartCh)
+        bitset<1> digit = Matrix[i] - '0';
+        if (digit != currentCh)
         {
             Code.push_back(0);
             currentCh = ~currentCh;
@@ -54,7 +55,6 @@ public:
 
         while (i < MatrixSize)
         {
-            bitset<1> digit = Matrix[i] - '0';
             int cnt = 0; // 统计连续数量
             while (digit == currentCh)
             {
