@@ -55,8 +55,8 @@ public:
 
         while (i < MatrixSize)
         {
-            int cnt = 0; // 统计连续数量
-            while (digit == currentCh)
+            int cnt = 0;                                 // 统计连续数量
+            while (i < MatrixSize && digit == currentCh) // 这里出问题了
             {
                 cnt++;
                 i++;
