@@ -12,41 +12,42 @@
 using namespace std;
 
 #define rep(i, s, k) for (int i = s; i <= k; i++) // 定义快速循环
+#define ld long double                            // 定义长浮点
 
 class FishEscape
 {
 private:
-    double Detector;                  // 检测器的位置。
-    double DetectRange;               // 检测器的检测范围。
-    const double InitPace = 7;        // 小鱼的初始步长
-    const double DecreaseRate = 0.98; // 每次减小的比例
+    ld Detector;                  // 检测器的位置。
+    ld DetectRange;               // 检测器的检测范围。
+    const ld InitPace = 7;        // 小鱼的初始步长
+    const ld DecreaseRate = 0.98; // 每次减小的比例
 
 public:
     /* 初始化，输入探测器位置和范围。 */
-    FishEscape(double detector,
-               double detectrange) : Detector(detector),
-                                     DetectRange(detectrange)
+    FishEscape(ld detector,
+               ld detectrange) : Detector(detector),
+                                 DetectRange(detectrange)
     {
     }
 
     /* 判断小鱼是否能顺利逃脱。 */
     bool JudgeEscape()
     {
-        double Pace = InitPace;
-        double LeftThres = Detector - DetectRange;
-        double RightThres = Detector + DetectRange;
+        ld Pace = InitPace;
+        ld LeftThres = Detector - DetectRange;
+        ld RightThres = Detector + DetectRange;
 
-        double Dis = 0;
+        ld Dis = 0;
         while (Dis <= RightThres)
         {
             // cout << Dis << " ";
-            Dis += Pace;
-            Pace *= DecreaseRate;
-
-            if (Dis >= LeftThres && Dis + Pace <= RightThres)
+            if (Dis >= LeftThres && Dis + Pace <= RightThres) // 可能是这里，应该先判断
             {
                 return false;
             }
+
+            Dis += Pace;
+            Pace *= DecreaseRate;
         }
         // cout << endl;
 
@@ -56,7 +57,7 @@ public:
 
 int main()
 {
-    double detector, detectrange;
+    ld detector, detectrange;
     cin >> detector >> detectrange;
 
     FishEscape fe(detector, detectrange);
