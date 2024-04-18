@@ -16,9 +16,10 @@ using namespace std;
 class FishEscape
 {
 private:
-    double Detector;           // 检测器的位置。
-    double DetectRange;        // 检测器的检测范围。
-    const double InitPace = 7; // 小鱼的初始步长
+    double Detector;                  // 检测器的位置。
+    double DetectRange;               // 检测器的检测范围。
+    const double InitPace = 7;        // 小鱼的初始步长
+    const double DecreaseRate = 0.98; // 每次减小的比例
 
 public:
     /* 初始化，输入探测器位置和范围。 */
@@ -40,7 +41,7 @@ public:
         {
             // cout << Dis << " ";
             Dis += Pace;
-            Pace *= 0.98;
+            Pace *= DecreaseRate;
 
             if (Dis >= LeftThres && Dis + Pace <= RightThres)
             {
