@@ -31,12 +31,12 @@ public:
     /* 判断小鱼是否能顺利逃脱。 */
     bool JudgeEscape()
     {
-        double Pace = 7;
+        double Pace = InitPace;
         double LeftThres = Detector - DetectRange;
         double RightThres = Detector + DetectRange;
 
         double Dis = 0;
-        while (Dis < RightThres)
+        while (Dis <= RightThres)
         {
             // cout << Dis << " ";
             Dis += Pace;
