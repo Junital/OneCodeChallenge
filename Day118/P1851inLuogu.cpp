@@ -13,7 +13,7 @@ using namespace std;
 #define ll long long                             // 定义长整型
 #define rep(i, s, k) for (ll i = s; i <= k; i++) // 定义快速循环
 #define per(i, s, k) for (ll i = s; i >= k; i--) // 定义倒置循环
-#define MAXINT 20000                             // 定义最大值。
+#define MAXINT 18500                             // 定义最大值。
 
 class GoodFriends
 {
