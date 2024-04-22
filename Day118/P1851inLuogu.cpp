@@ -53,15 +53,32 @@ private:
     /* 初始化 */
     void init()
     {
-        rep(i, 1, MAXINT)
-        {
-            int fri = getFactorSum(i);
-            if (getFactorSum(fri) == i && fri != i)
-            {
-                // cout << i << " " << fri << endl;
-                BestFriends.push_back(Friends(i, fri));
-            }
-        }
+        // rep(i, 1, MAXINT)
+        // {
+        //     int fri = getFactorSum(i);
+        //     if (getFactorSum(fri) == i && fri != i)
+        //     {
+        //         // cout << i << " " << fri << endl;
+        //         BestFriends.push_back(Friends(i, fri));
+        //     }
+        // }
+
+        BestFriends.push_back(Friends(220, 284));
+        BestFriends.push_back(Friends(284, 220));
+        BestFriends.push_back(Friends(1184, 1210));
+        BestFriends.push_back(Friends(1210, 1184));
+        BestFriends.push_back(Friends(2620, 2924));
+        BestFriends.push_back(Friends(2924, 2620));
+        BestFriends.push_back(Friends(5020, 5564));
+        BestFriends.push_back(Friends(5564, 5020));
+        BestFriends.push_back(Friends(6232, 6368));
+        BestFriends.push_back(Friends(6368, 6232));
+        BestFriends.push_back(Friends(10744, 10856));
+        BestFriends.push_back(Friends(10856, 10744));
+        BestFriends.push_back(Friends(12285, 14595));
+        BestFriends.push_back(Friends(14595, 12285));
+        BestFriends.push_back(Friends(17296, 18416));
+        BestFriends.push_back(Friends(18416, 17296));
     }
 
 public:
