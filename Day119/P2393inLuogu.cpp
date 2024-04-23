@@ -12,9 +12,9 @@ using namespace std;
 
 #define ld long double // 定义长浮点数
 
-ld LongDoubleSum(vector<ld> Seq)
+double DoubleSum(vector<double> Seq)
 {
-    ld Sum = 0;
+    double Sum = 0;
 
     for (auto num : Seq)
     {
@@ -26,13 +26,13 @@ ld LongDoubleSum(vector<ld> Seq)
 
 int main()
 {
-    ld Num;
-    vector<ld> seq;
+    double Num;
+    vector<double> seq;
 
-    while (cin >> Num)
+    while (scanf("%15lf", &Num))
     {
         seq.push_back(Num);
     }
 
-    cout << fixed << setprecision(5) << LongDoubleSum(seq) << endl;
+    printf("%.5lf\n", DoubleSum(seq));
 }
