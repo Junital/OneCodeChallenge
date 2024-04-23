@@ -12,27 +12,16 @@ using namespace std;
 
 #define ld long double // 定义长浮点数
 
-ld DoubleSum(vector<ld> Seq)
-{
-    ld Sum = 0;
-
-    for (auto num : Seq)
-    {
-        Sum += num;
-    }
-
-    return Sum;
-}
-
 int main()
 {
     ld Num;
-    vector<ld> seq;
 
-    while (scanf("%15Lf", &Num))
+    ld Sum = 0;
+
+    while (scanf("%Lf", &Num) != EOF)
     {
-        seq.push_back(Num);
+        Sum += Num * 1000000; // 玄幻精度解决
     }
 
-    printf("%.5Lf\n", DoubleSum(seq));
+    printf("%.5Lf\n", Sum / 1000000);
 }
