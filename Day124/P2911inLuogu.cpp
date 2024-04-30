@@ -35,13 +35,13 @@ public:
         int MaxDice = max(max(Dice1, Dice2), Dice3);
         int MidDice = (Dice1 + Dice2 + Dice3) - (MinDice + MaxDice);
 
-        if (MidDice <= MaxDice - MinDice + 1)
+        if (MinDice <= MaxDice - MidDice + 1) // 这里Min Mid交换是没关系的
         {
             return MinDice + MidDice + 1;
         }
         else
         {
-            int LeftPart = 1 + (MidDice - (MaxDice - MinDice + 1)) / 2;
+            int LeftPart = 1 + (MinDice - (MaxDice - MidDice + 1)) / 2; // 这里Min Mid交换是没关系的
             int RightPart = 1 + MaxDice;
             return LeftPart + RightPart;
         }
