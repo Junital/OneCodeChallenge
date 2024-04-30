@@ -15,6 +15,7 @@ Here are some problems which I attached solving pictures:
 |[P2064 Luogu](https://www.luogu.com.cn/problem/P2064)|![P2064 Solve](./Day1-100/Day81-90/Day88/P2064%20Solve.svg)|
 |[P4326 Luogu](https://www.luogu.com.cn/problem/P4326)|![P4326 Solve](./Day1-100/Day1-10/Day1/P4326inLuogu.svg)|
 |[P1876 Luogu](https://www.luogu.com.cn/problem/P1876)|![P1876 Solve](./Day1-100/Day61-70/Day63/Idea.svg)|
+|[P6153 Luogu](https://www.luogu.com.cn/problem/P6153)|![P6153 Solve](./Day125/P6153%20Solve.svg)|
 |[P2907 Luogu](https://www.luogu.com.cn/problem/P2907)|![P2907 Solve](./Day1-100/Day61-70/Day66/Solve.svg)|
 |[P5713 Luogu](https://www.luogu.com.cn/problem/P5713)|![P5713 Solve](./Day1-100/Day61-70/Day69/Solve.svg)|
 |[P5720 Luogu](https://www.luogu.com.cn/problem/P5720)|![P5720 Solve](./Day1-100/Day71-80/Day71/Solve.svg)|

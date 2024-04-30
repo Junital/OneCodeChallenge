@@ -20,6 +20,9 @@ ll Minus(ll X, ll Y)
 
 int main()
 {
+    ios::sync_with_stdio(false); // 保证快速读入
+    cin.tie(0);
+
     ll Num, QueryNum;
     cin >> Num >> QueryNum;
 
