@@ -70,9 +70,16 @@ int main()
     cin >> mod;
     vector<int> ans = sn.findSubNum(mod, 10000, 30000);
 
-    for (auto a : ans)
+    if (ans.size() == 0)
     {
-        cout << a << endl;
+        cout << "No" << endl;
+    }
+    else
+    {
+        for (auto a : ans)
+        {
+            cout << a << endl;
+        }
     }
     return 0;
 }
