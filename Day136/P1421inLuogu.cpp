@@ -45,7 +45,7 @@ public:
 
         if (resJiao < 0)
         {
-            resJiao %= 10;
+            resJiao += 10;
             resYuan -= 1;
         }
 
