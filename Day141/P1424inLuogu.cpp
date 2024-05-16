@@ -22,19 +22,23 @@ public:
     /* 输入目前的天数和经过的天数，输出工作日天数。 */
     int CountWeekDay(int StartIdx, int Period)
     {
-        int weekdays = Period;
-        while (Period >= DaysPerWeek)
-        {
-            Period -= DaysPerWeek;
-            weekdays -= RestDaysPerWeek;
-        }
+        int weekdays = Period - (Period / DaysPerWeek) * RestDaysPerWeek;
+        Period %= DaysPerWeek;
 
         int endIdx = StartIdx + Period - 1;
-        if (endIdx >= DaysPerWeek && StartIdx <= DaysPerWeek - 1) // 扣一个周末
+        set<int> Days; // 记录星期
+
+        rep(i, StartIdx, endIdx)
         {
-            weekdays -= 2;
+            Days.insert(i % DaysPerWeek);
         }
-        else if (endIdx >= DaysPerWeek - 1 || StartIdx <= DaysPerWeek) // 扣一天
+
+        if (Days.count(DaysPerWeek - 1) > 0) // 周六
+        {
+            weekdays -= 1;
+        }
+
+        if (Days.count(0) > 0) // 周日
         {
             weekdays -= 1;
         }

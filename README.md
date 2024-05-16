@@ -22,3 +22,4 @@ Here are some problems which I attached solving pictures:
 |[P4702 Luogu](https://www.luogu.com.cn/problem/P4702)|![P4702 Solve](./Day101-110/Day108/P4702%20Solve.svg)|
 |[P1614 Luogu](https://www.luogu.com.cn/problem/P1614)|![P1614 Solve](./Day101-110/Day110/P1614%20Solve.svg)|
 |[P2705 Luogu](https://www.luogu.com.cn/problem/P2705)|![P2705 Solve](./Day121-130/Day123/P2705%20Solve.svg)|
+|[P1424 Luogu](https://www.luogu.com.cn/problem/P1424)|![P1424 Solve](./Day141/P1424%20Solve.png)|
