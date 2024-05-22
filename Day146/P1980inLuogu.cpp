@@ -25,7 +25,7 @@ public:
         /* 以数字个数为728，数字为7为例 */
         while (Group <= Num)
         {
-            Sum += Num / (Group * 10) * Group; // 统计720中的7、700中的70和7000中的700
+            Sum += Num / (Group * 10) * Group; // 统计720中的7、700中的70。
 
             if (Num >= Group * 10) // 统计720~728中的7、700~728中的70
             {
@@ -35,9 +35,17 @@ public:
                     Sum += Group;
                 }
             }
-            else if (Num >= Group * Digit && Digit != 0) // 统计700~728中的700。
+            else // 统计100~728中的700。
             {
-                Sum += (Num - Group * Digit + 1);
+                int CurrentMin = Group * Digit; // 目前最小的值
+                if (Digit == Num / Group)       // 100~728中的700
+                {
+                    Sum += Num - CurrentMin + 1;
+                }
+                else if (Digit < Num / Group && Digit > 0) // 100~415中的200
+                {
+                    Sum += Group;
+                }
             }
             // cout << Sum << endl;
 
