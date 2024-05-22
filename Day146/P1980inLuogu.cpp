@@ -35,7 +35,7 @@ public:
                     Sum += Group;
                 }
             }
-            else if (Num >= Group * Digit) // 统计700~728中的700。
+            else if (Num >= Group * Digit && Digit != 0) // 统计700~728中的700。
             {
                 Sum += (Num - Group * Digit + 1);
             }
