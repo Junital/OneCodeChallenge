@@ -10,6 +10,7 @@ Here are some problems which I attached solving pictures:
 
 |Problems|How to solve?|
 |---|---|
+|[P1980 Luogu](https://www.luogu.com.cn/problem/P1980)|![P1980 Solve](./Day146/P1980%20Solve.svg)|
 |[P2911 Luogu](https://www.luogu.com.cn/problem/P2911)|![P2911 Solve](./Day121-130/Day124/P2911%20Solve.svg)|
 |[P4956 Luogu](https://www.luogu.com.cn/problem/P4956)|![P4956 Solve](./Day1-100/Day21-30/Day22/P4956solve.svg)|
 |[P2064 Luogu](https://www.luogu.com.cn/problem/P2064)|![P2064 Solve](./Day1-100/Day81-90/Day88/P2064%20Solve.svg)|
