@@ -24,9 +24,9 @@ public:
     }
 
     /* 初始化，输入下发金额数组和预计消费数组。
-    如果某一编号X无法消费，返回-X。
-    否则返回一共存下的金额。 */
-    int store(vector<int> Salary, vector<int> Demand)
+    如果某一编号X无法消费，返回-1,X。
+    否则返回一共存下的金额,手上还有的钱。 */
+    pair<int, int> store(vector<int> Salary, vector<int> Demand)
     {
         assert(Salary.size() == Demand.size());
         int MoneyInHand = 0;         // 目前的钱
@@ -37,7 +37,7 @@ public:
         {
             if (MoneyInHand + Salary[i] < Demand[i])
             {
-                return i * -1;
+                return make_pair(-1, i);
             }
 
             int Balance = MoneyInHand + Salary[i] - Demand[i];
@@ -45,7 +45,7 @@ public:
             MoneyInHand = Balance % MoneyBatch;
         }
 
-        return Stored;
+        return make_pair(Stored, MoneyInHand);
     }
 };
 
@@ -67,15 +67,15 @@ int main()
         Salary.push_back(salary);
     }
 
-    int ans = sm.store(Salary, Demand);
-    if (ans < 0)
+    pair<int, int> ans = sm.store(Salary, Demand);
+    if (ans.first < 0)
     {
-        cout << ans - 1 << endl; // -1来满足输出要求
+        cout << ans.first * (ans.second + 1) << endl; // +1来满足输出要求
     }
     else
     {
-        int Bonus = ans * (1 + rate);
-        cout << Bonus << endl;
+        int Bonus = ans.first * (1 + rate);
+        cout << Bonus + ans.second << endl;
     }
     return 0;
 }
