@@ -37,8 +37,15 @@ public:
         {
             return -1;
         }
+
+        auto ans = min_element(res, value_time.end(),
+                               [](const std::pair<int, int> &a, const std::pair<int, int> &b)
+                               {
+                                   return a.second < b.second; // 按照 first 值进行比较
+                               });
+
         // cout << (*res).first << endl;
-        return max(0, (*res).second - query.second);
+        return max(0, (*ans).second - query.second);
     }
 };
 
