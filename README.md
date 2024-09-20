@@ -1,8 +1,8 @@
 # OneCodeChallenge
 
-Hi, I'm Junital. This repository is designed for challenging myself, in which I will try to code problems in CodeForce, Luogu, Nowcoder and LeetCoder everyday. Now I have coded for $\times 265$ days.
+Hi, I'm Junital. This repository is designed for challenging myself, in which I will try to code problems in CodeForce, Luogu, Nowcoder and LeetCoder everyday. Now I have coded for $\times 266$ days.
 
-- Easy Problems: [Day1-100](./Day1-100/), [Day101-200](./Day101-200/), [Day201-210](./Day201-210/).
+- Easy Problems: [Day1-100](./Day1-100/), [Day101-200](./Day101-200/), [Day201-210](./Day201-210/)， [Day211-220](./Day211-220/), [Day221-230](./Day221-230/), [Day231-240](./Day231-240/), [Day241-250](./Day241-250/), [Day251-260](./Day251-260/).
 - Medium Problems：[P2064](./Day1-100/Day81-90/Day88/P1319inLuogu.cpp)
 - Sticky Problems: [CodeForce 1742D](./Day1-100/Day71-80/Day75/1742DinCodeForce.cpp).
 
