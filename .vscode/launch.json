@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "d:/D/xiaochengxu/cpp/Dev/OneCodeChallenge/Day269",
-      "program": "d:/D/xiaochengxu/cpp/Dev/OneCodeChallenge/Day269/build/Debug/outDebug",
+      "cwd": "d:/D/xiaochengxu/cpp/Dev/OneCodeChallenge/Day271",
+      "program": "d:/D/xiaochengxu/cpp/Dev/OneCodeChallenge/Day271/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
