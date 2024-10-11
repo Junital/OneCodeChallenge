@@ -10,6 +10,7 @@ Here are some problems which I attached solving pictures:
 
 |Problems|How to solve?|
 |---|---|
+|[P7573inLuogu](https://www.luogu.com.cn/problem/P7573)|![P7573 Solve](./Day287/P7573%20Solve.png)|
 |[P11154 Luogu](https://www.luogu.com.cn/problem/P11154)|Play by yourself. ![Arcaea](./Day271-280/Day280/arcaea.jpg)|
 |[B2619 Luogu](https://www.luogu.com.cn/problem/B2619)|![B2619 Solve](./Day211-220/Day216/B2619%20Solve.svg)|
 |[B2607 Luogu](https://www.luogu.com.cn/problem/B2607)|![B2607 Solve](./Day211-220/Day212/B2607%20Solve.svg)|
