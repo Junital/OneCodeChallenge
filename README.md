@@ -1,6 +1,6 @@
 # OneCodeChallenge
 
-Hi, I'm Junital. This repository is designed for challenging myself, in which I will try to code problems in CodeForce, [Luogu](www.luogu.com.cn), Nowcoder and LeetCoder everyday. Now I have coded for $\times 350$ days.
+Hi, I'm Junital. This repository is designed for challenging myself, in which I will try to code problems in CodeForce, [Luogu](www.luogu.com.cn), Nowcoder and LeetCoder everyday. Now I have coded for $\times 351$ days.
 
 - Easy Problems: [Day1-100](./Day1-100/), [Day101-200](./Day101-200/), [Day201-300](./Day201-300/).
 - Medium Problems：[P2064](./Day1-100/Day81-90/Day88/P1319inLuogu.cpp).
@@ -10,8 +10,8 @@ Here are some problems which I attached solving pictures:
 
 |Problems|How to solve?|
 |---|---|
-|[P7540](https://www.luogu.com.cn/problem/P7540)|![P7540 Solve](./Day350/P7540%20Solve.svg)|
-|[P10520](https://www.luogu.com.cn/problem/P10520)|Play the [game](https://core-of-banyan.github.io/) by yourself. ![core-of-banyan](./Day337/core-of-banyan.png)|
+|[P7540](https://www.luogu.com.cn/problem/P7540)|![P7540 Solve](./Day341-350/Day350/P7540%20Solve.svg)|
+|[P10520](https://www.luogu.com.cn/problem/P10520)|Play the [game](https://core-of-banyan.github.io/) by yourself. ![core-of-banyan](./Day331-340/Day337/core-of-banyan.png)|
 |[B2608](https://www.luogu.com.cn/problem/B2608)|![B2608 Solve](./Day321-330/Day328/B2608%20Solve.svg)|
 |[B3729](https://www.luogu.com.cn/problem/B3729)|![P3729 Solve](./Day301-310/Day306/B3729%20Solve.svg)|
 |[P7573inLuogu](https://www.luogu.com.cn/problem/P7573)|![P7573 Solve](./Day201-300/Day281-290/Day287/P7573%20Solve.png)|
