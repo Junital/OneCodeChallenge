@@ -10,7 +10,7 @@ Here are some problems which I attached solving pictures:
 
 | Problems                                                | How to solve?                                                                                                             |
 | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| [P11176](https://www.luogu.com.cn/problem/P11176)       | ![P11176 Solve](./Day373/P11176%20Solve.svg)                                                                              |
+| [P11176](https://www.luogu.com.cn/problem/P11176)       | ![P11176 Solve](./Day371-380/Day373/P11176%20Solve.svg)                                                                              |
 | [P7540](https://www.luogu.com.cn/problem/P7540)         | ![P7540 Solve](./Day341-350/Day350/P7540%20Solve.svg)                                                                     |
 | [P10520](https://www.luogu.com.cn/problem/P10520)       | Play the [game](https://core-of-banyan.github.io/) by yourself. ![core-of-banyan](./Day331-340/Day337/core-of-banyan.png) |
 | [B2608](https://www.luogu.com.cn/problem/B2608)         | ![B2608 Solve](./Day321-330/Day328/B2608%20Solve.svg)                                                                     |
