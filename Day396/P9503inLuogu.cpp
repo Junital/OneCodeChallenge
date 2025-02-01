@@ -153,10 +153,12 @@ public:
         Binary<Length> current = bits;
         for (auto i : idx)
         {
+            /* 先与，保留前面、删掉后面。 */
             Binary<Length> change(construct_bitmask(Length - i, i));
 
             Binary<Length> new_bits = current & change;
 
+            /* 再或，调整本位。 */
             change.setValue(1ULL << i);
             new_bits = new_bits | change;
 
