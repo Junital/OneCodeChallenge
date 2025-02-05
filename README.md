@@ -10,11 +10,11 @@ Here are some problems which I attached solving pictures:
 
 | Problems                                                | How to solve?                                                                                                             |
 | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| [P11176](https://www.luogu.com.cn/problem/P11176)       | ![P11176 Solve](./Day371-380/Day373/P11176%20Solve.svg)                                                                              |
-| [P7540](https://www.luogu.com.cn/problem/P7540)         | ![P7540 Solve](./Day341-350/Day350/P7540%20Solve.svg)                                                                     |
-| [P10520](https://www.luogu.com.cn/problem/P10520)       | Play the [game](https://core-of-banyan.github.io/) by yourself. ![core-of-banyan](./Day331-340/Day337/core-of-banyan.png) |
-| [B2608](https://www.luogu.com.cn/problem/B2608)         | ![B2608 Solve](./Day321-330/Day328/B2608%20Solve.svg)                                                                     |
-| [B3729](https://www.luogu.com.cn/problem/B3729)         | ![P3729 Solve](./Day301-310/Day306/B3729%20Solve.svg)                                                                     |
+| [P11176](https://www.luogu.com.cn/problem/P11176)       | ![P11176 Solve](./Day301-400/Day371-380/Day373/P11176%20Solve.svg)                                                                              |
+| [P7540](https://www.luogu.com.cn/problem/P7540)         | ![P7540 Solve](./Day301-400/Day341-350/Day350/P7540%20Solve.svg)                                                                     |
+| [P10520](https://www.luogu.com.cn/problem/P10520)       | Play the [game](https://core-of-banyan.github.io/) by yourself. ![core-of-banyan](./Day301-400/Day331-340/Day337/core-of-banyan.png) |
+| [B2608](https://www.luogu.com.cn/problem/B2608)         | ![B2608 Solve](./Day301-400/Day321-330/Day328/B2608%20Solve.svg)                                                                     |
+| [B3729](https://www.luogu.com.cn/problem/B3729)         | ![P3729 Solve](./Day301-400/Day301-310/Day306/B3729%20Solve.svg)                                                                     |
 | [P7573inLuogu](https://www.luogu.com.cn/problem/P7573)  | ![P7573 Solve](./Day201-300/Day281-290/Day287/P7573%20Solve.png)                                                          |
 | [P11154 Luogu](https://www.luogu.com.cn/problem/P11154) | Play by yourself. ![Arcaea](./Day201-300/Day271-280/Day280/arcaea.jpg)                                                    |
 | [B2619 Luogu](https://www.luogu.com.cn/problem/B2619)   | ![B2619 Solve](./Day201-300/Day211-220/Day216/B2619%20Solve.svg)                                                          |
