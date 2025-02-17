@@ -4,7 +4,7 @@ Hi, I'm Junital. This repository is designed for challenging myself, in which I 
 
 ## Update
 
-- **2025/2/16**: 🔥🔥Trying to deal with a problem with difficulty `NOI/NOI+/CTSC`, it's time to challenge myself.
+- **2025/2/16**: 🔥🔥Trying to deal with a [problem](https://www.luogu.com.cn/problem/P11738) with difficulty `NOI/NOI+/CTSC`, it's time to challenge myself.
 
 ## Problem Levels
 
