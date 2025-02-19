@@ -339,9 +339,11 @@ struct Variable
 {
     vector<int> Dimensions; // 数组维度
     vector<int> Values;     // 数组值
+    int DimenSize;          // 维度数量
 
     /* 初始化，输入维度，获取内存。 */
-    Variable(vector<int> dimens) : Dimensions(dimens)
+    Variable(vector<int> dimens)
+        : Dimensions(dimens), DimenSize(dimens.size())
     {
         int size = 1;
         for (auto d : Dimensions)
@@ -355,13 +357,17 @@ struct Variable
     /* 输入维度，输出对应的值。 */
     int *at(vector<int> Idx)
     {
-        assert(Idx.size() == Dimensions.size());
+        int idx_size = Idx.size();
+        // cout << idx_size << " " << DimenSize << endl;
+        assert(idx_size == DimenSize);
 
-        int dimen_size = Dimensions.size();
         int idx = 0;
-        rep(i, 0, dimen_size - 1)
+        int base = 1;
+        rep(i, 0, DimenSize - 1)
         {
-            idx += Idx[i] * Dimensions[i];
+            assert(Idx[i] < Dimensions[i]);
+            idx += Idx[i] * base;
+            base *= Dimensions[i];
         }
 
         return &Values[idx];
@@ -370,14 +376,16 @@ struct Variable
     /* 设置对应的值。 */
     void assgin(vector<int> Idx, int value)
     {
-        assert(Idx.size() == Dimensions.size());
+        int idx_size = Idx.size();
+        assert(idx_size == DimenSize);
 
-        int dimen_size = Dimensions.size();
-        // cout << "Dimension size: " << dimen_size << endl;
         int idx = 0;
-        rep(i, 0, dimen_size - 1)
+        int base = 1;
+        rep(i, 0, DimenSize - 1)
         {
-            idx += Idx[i] * Dimensions[i];
+            assert(Idx[i] < Dimensions[i]);
+            idx += Idx[i] * base;
+            base *= Dimensions[i];
         }
 
         Values[idx] = value;
@@ -413,6 +421,7 @@ public:
     /* 获取变量的引用。 */
     int *get_ref(string name, vector<int> idx)
     {
+        // cout << name << " ";
         return Variables[name].top().at(idx);
     }
 
@@ -473,7 +482,7 @@ private:
     stack<stack<Token>> Nums;         // 所有INT变量
     stack<stack<Token>> Ops;          // 所有操作符
     stack<map<string, int *>> RefMap; // 变量引用映射
-    int BraceCnt;                     // 记录大括号数量（因为可能在{}里突然return）
+    stack<int> BraceCnt;              // 记录大括号数量（因为可能在{}里突然return）
 
     /* 获取目前位置的变量。 */
     pair<string, vector<int>> get_variable()
@@ -499,13 +508,22 @@ private:
                 throw invalid_argument("Array must start with [.");
             }
 
-            token = Tokens[TokenIdx++];
-            if (token.type != T_INT_CONSTANT)
-            {
-                throw invalid_argument("Array's dimension must be INT, not a expression.");
-            }
-            dimensions.push_back(stoi(token.value));
+            int begin_pos = TokenIdx;
+            TokenIdx--;
+            int end_pos = match_group_symbol() - 1;
 
+            Nums.push(stack<Token>());
+            Ops.push(stack<Token>());
+            RefMap.push(map<string, int *>());
+
+            int value = run_expression(begin_pos, end_pos);
+            Nums.pop();
+            Ops.pop();
+            RefMap.pop();
+
+            dimensions.push_back(value);
+
+            TokenIdx--;
             token = Tokens[TokenIdx++];
             if (token.type != T_RBRACKET)
             {
@@ -515,7 +533,7 @@ private:
             token = Tokens[TokenIdx++];
         }
 
-        // cout << "Sucess" << endl;
+        // cout << to_variable_string(make_pair(var_name, dimensions)) << endl;
         return make_pair(var_name, dimensions);
     }
 
@@ -647,7 +665,7 @@ private:
     bool judge_right_combine(Token token)
     {
         return token.type == T_NOT || token.value == "$+" ||
-               token.value == "$-";
+               token.value == "$-" || token.type == T_ASSIGN;
     }
 
     /* 将变量转化为字符串。 */
@@ -668,6 +686,7 @@ private:
     /* 将字符串转化为变量。 */
     pair<string, vector<int>> string_to_var(string var_str)
     {
+        cout << var_str << endl;
         int str_size = var_str.size();
         string var_name;
         vector<int> idx;
@@ -681,7 +700,11 @@ private:
 
         while (i < str_size)
         {
-            assert(var_str[i] == '[');
+            if (var_str[i] != '[')
+            {
+                cout << var_str[i - 1] << " " << var_str[i] << endl;
+                throw invalid_argument("Unknown token in variable string.");
+            }
             i++;
             assert(isdigit(var_str[i]));
             int number = 0;
@@ -748,6 +771,15 @@ private:
             else if (top_op.type == T_MINUS)
             {
                 Nums.top().push(value_to_token(-a));
+                return;
+            }
+            /* =运算符 */
+            else if (top_op.type == T_ASSIGN)
+            {
+                // cout << A.value << " " << b << endl;
+                Nums.top().push(value_to_token(b ? 1 : 0));
+                auto variable = string_to_var(A.value);
+                vs.set_value(variable.first, variable.second, b);
                 return;
             }
             else
@@ -847,15 +879,6 @@ private:
             else if (top_op.type == T_OR)
             {
                 Nums.top().push(value_to_token((a || b) ? 1 : 0));
-                return;
-            }
-            /* =运算符 */
-            else if (top_op.type == T_ASSIGN)
-            {
-                // cout << A.value << " " << b << endl;
-                Nums.top().push(value_to_token(b ? 1 : 0));
-                auto variable = string_to_var(A.value);
-                vs.set_value(variable.first, variable.second, b);
                 return;
             }
             else
@@ -1029,7 +1052,6 @@ private:
         TokenIdx = pos;
 
         Token token = Tokens[TokenIdx++];
-        // cout << token.value << endl;
         /* 如果是int开头的语句，那么只可能是声明 int a[2][2], b;这种。 */
         if (token.type == T_INT)
         {
@@ -1057,7 +1079,9 @@ private:
             Nums.push(stack<Token>());
             Ops.push(stack<Token>());
             RefMap.push(map<string, int *>());
-            BraceCnt++;
+            int new_cnt = BraceCnt.top();
+            BraceCnt.pop();
+            BraceCnt.push(new_cnt + 1);
 
             return token;
         }
@@ -1068,7 +1092,9 @@ private:
             Ops.pop();
             RefMap.pop();
             vs.remove_block();
-            BraceCnt--;
+            int new_cnt = BraceCnt.top();
+            BraceCnt.pop();
+            BraceCnt.push(new_cnt - 1);
 
             return token;
         }
@@ -1118,7 +1144,15 @@ private:
                     }
                     int end_pos = TokenIdx - 2;
 
+                    Nums.push(stack<Token>());
+                    Ops.push(stack<Token>());
+                    RefMap.push(map<string, int *>());
+
                     cout << run_expression(begin_pos, end_pos);
+
+                    Nums.pop();
+                    Ops.pop();
+                    RefMap.pop();
                 }
             }
             return token;
@@ -1134,15 +1168,25 @@ private:
             }
             int end_pos = TokenIdx - 2;
 
+            Nums.push(stack<Token>());
+            Ops.push(stack<Token>());
+            RefMap.push(map<string, int *>());
+
             vs.add_return(run_expression(begin_pos, end_pos));
 
-            rep(i, 1, BraceCnt + 1)
+            Nums.pop();
+            Ops.pop();
+            RefMap.pop();
+
+            int brace_cnt = BraceCnt.top();
+            rep(i, 1, brace_cnt + 1)
             {
                 Nums.pop();
                 Ops.pop();
                 RefMap.pop();
                 vs.remove_block();
             }
+            BraceCnt.pop();
             return token;
         }
         /* 输入指令 if (expression) STATEMENT */
@@ -1158,42 +1202,36 @@ private:
             TokenIdx--;
             int end_pos = match_group_symbol() - 1;
 
+            Nums.push(stack<Token>());
+            Ops.push(stack<Token>());
+            RefMap.push(map<string, int *>());
+
             int condition = run_expression(begin_pos, end_pos);
-            int temp_idx = TokenIdx;
+
+            Nums.pop();
+            Ops.pop();
+            RefMap.pop();
 
             bool has_else = false;
-            int else_pos;
-
-            /* 开始找else，如果出现新的if或者超过}的范围，停止寻找。 */
-            int brace_cnt = 1;
-            while (Tokens[temp_idx].type != T_IF &&
-                   brace_cnt > 0)
-            {
-                if (Tokens[temp_idx].type == T_ELSE)
-                {
-                    has_else = true;
-                    else_pos = temp_idx;
-                    break;
-                }
-                temp_idx++;
-            }
 
             int yes_begin = TokenIdx;
             int yes_end;
             int no_begin;
             int no_end;
 
+            /* 开始找else，如果出现新的if或者超过}的范围，停止寻找。 */
+            yes_end = find_block_end(yes_begin);
+            has_else = (Tokens[yes_end + 1].type == T_ELSE);
+
             /* 如果有else，之后运行的代码为else之后；
                否则，之后运行的代码在if控制的范围之后。 */
             if (has_else)
             {
-                yes_end = else_pos - 1;
-                no_begin = else_pos + 1;
+                no_begin = yes_end + 2;
                 no_end = find_block_end(no_begin);
             }
             else
             {
-                yes_end = find_block_end(yes_begin);
                 no_begin = yes_end + 1;
             }
 
@@ -1203,12 +1241,19 @@ private:
             // }
             // cout << endl;
 
+            int cur_return_num = vs.get_return_num();
+
             /* 如果条件为true。 */
             if (condition)
             {
                 TokenIdx = yes_begin;
                 while (TokenIdx < yes_end)
                 {
+                    int new_return_num = vs.get_return_num();
+                    if (new_return_num > cur_return_num)
+                    {
+                        return Tokens[TokenIdx - 1];
+                    }
                     run_statement(TokenIdx);
                 }
 
@@ -1234,6 +1279,11 @@ private:
                     TokenIdx = no_begin;
                     while (TokenIdx < yes_end)
                     {
+                        int new_return_num = vs.get_return_num();
+                        if (new_return_num > cur_return_num)
+                        {
+                            return Tokens[TokenIdx - 1];
+                        }
                         run_statement(TokenIdx);
                     }
                     return Tokens[TokenIdx - 1];
@@ -1246,6 +1296,114 @@ private:
                 }
             }
         }
+        /* 输入指令 while (expression) STATEMENT */
+        else if (token.type == T_WHILE)
+        {
+            token = Tokens[TokenIdx++];
+            if (token.type != T_LPAREN)
+            {
+                throw invalid_argument("( must follow while.");
+            }
+
+            int begin_pos = TokenIdx;
+            TokenIdx--;
+            int end_pos = match_group_symbol() - 1;
+
+            int while_begin = TokenIdx;
+            int while_end = find_block_end(while_begin);
+            int cur_return_num = vs.get_return_num();
+
+            Nums.push(stack<Token>());
+            Ops.push(stack<Token>());
+            RefMap.push(map<string, int *>());
+
+            while (run_expression(begin_pos, end_pos))
+            {
+                TokenIdx = while_begin;
+                while (TokenIdx < while_end)
+                {
+                    int new_return_num = vs.get_return_num();
+                    if (new_return_num > cur_return_num)
+                    {
+                        return Tokens[TokenIdx - 1];
+                    }
+                    run_statement(TokenIdx);
+                }
+            }
+
+            Nums.pop();
+            Ops.pop();
+            RefMap.pop();
+
+            return Tokens[TokenIdx - 1];
+        }
+        /* 输入指令 for (expression; expression; expression) STATEMENT */
+        else if (token.type == T_FOR)
+        {
+            token = Tokens[TokenIdx++];
+            if (token.type != T_LPAREN)
+            {
+                throw invalid_argument("( must follow while.");
+            }
+
+            int init_begin = TokenIdx;
+            int init_end = find_block_end(init_begin) - 1;
+
+            int condition_begin = init_end + 2;
+            int condition_end = find_block_end(condition_begin) - 1;
+
+            TokenIdx--;
+            int iter_begin = condition_end + 2;
+            int iter_end = match_group_symbol() - 1;
+
+            int for_begin = TokenIdx;
+            int for_end = find_block_end(for_begin);
+
+            int cur_return_num = vs.get_return_num();
+
+            Nums.push(stack<Token>());
+            Ops.push(stack<Token>());
+            RefMap.push(map<string, int *>());
+
+            run_expression(init_begin, init_end);
+
+            Nums.pop();
+            Ops.pop();
+            RefMap.pop();
+
+            Nums.push(stack<Token>());
+            Ops.push(stack<Token>());
+            RefMap.push(map<string, int *>());
+
+            while (run_expression(condition_begin, condition_end))
+            {
+                TokenIdx = for_begin;
+                while (TokenIdx < for_end)
+                {
+                    int new_return_num = vs.get_return_num();
+                    if (new_return_num > cur_return_num)
+                    {
+                        return Tokens[TokenIdx - 1];
+                    }
+                    run_statement(TokenIdx);
+                }
+
+                Nums.push(stack<Token>());
+                Ops.push(stack<Token>());
+                RefMap.push(map<string, int *>());
+
+                run_expression(iter_begin, iter_end);
+
+                Nums.pop();
+                Ops.pop();
+                RefMap.pop();
+            }
+
+            Nums.pop();
+            Ops.pop();
+            RefMap.pop();
+            return Tokens[TokenIdx - 1];
+        }
         /* 计算表达式。 */
         else
         {
@@ -1255,7 +1413,15 @@ private:
                 token = Tokens[TokenIdx++];
             }
             int end_pos = TokenIdx - 2;
+
+            Nums.push(stack<Token>());
+            Ops.push(stack<Token>());
+            RefMap.push(map<string, int *>());
+
             run_expression(begin_pos, end_pos);
+            Nums.pop();
+            Ops.pop();
+            RefMap.pop();
 
             return token;
         }
@@ -1270,9 +1436,9 @@ private:
         Nums.push(stack<Token>());
         Ops.push(stack<Token>());
         RefMap.push(map<string, int *>());
-        BraceCnt = 0;
+        BraceCnt.push(0);
 
-        cout << "Buffer size: " << RefMap.size() << " " << Ops.size() << endl;
+        // cout << "Buffer size: " << RefMap.size() << " " << Ops.size() << endl;
 
         Function f = Funcs[func_name];
         if (f.Arguments.size() != argu_values.size())
@@ -1286,8 +1452,8 @@ private:
             vs.push(f.Arguments[i], vector<int>());                      // 参数只能是整型
             vs.set_value(f.Arguments[i], vector<int>(), argu_values[i]); // 赋值
 
-            cout << func_name << " " << f.Arguments[i] << " "
-                 << argu_values[i] << endl;
+            // cout << func_name << " " << f.Arguments[i] << " "
+            //      << argu_values[i] << endl;
         }
 
         int return_num = vs.get_return_num();

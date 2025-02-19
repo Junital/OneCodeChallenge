@@ -21,7 +21,7 @@ int main()
 {
     int i;
 
-    i = 2;
+    i = 3;
 
     cout << f(i) << endl;
     return 0;
