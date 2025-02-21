@@ -94,6 +94,10 @@ int emp(int l, int r)
     s[cur][0] = emp(l, mid);
     s[cur][1] = emp(mid + 1, r);
   }
+  cout << s[cur][0];
+  putchar(124);
+  cout << s[cur][1];
+  putchar(32);
   return cur;
 }
 
@@ -104,6 +108,16 @@ int insert(int cur, int l, int r, int b, int c)
   prec[nx] = cur;
   s[nx][0] = s[cur][0];
   s[nx][1] = s[cur][1];
+  // cout << cur;
+  // putchar(124);
+  // cout << l;
+  // putchar(124);
+  // cout << r;
+  // putchar(124);
+  // cout << s[nx][0];
+  // putchar(124);
+  // cout << s[nx][1];
+  // putchar(32);
   if (l == r)
     inS[c] = nx;
   else
@@ -333,9 +347,10 @@ int main(int argc, char *argv[])
   sc = 0;
   cout << N << endl;
   sroot[0] = emp(1, N);
+  cout << endl;
   for (i = 1; i <= N; i = i + 1)
     sroot[i] = insert(sroot[i - 1], 1, N, As_lower_bound(A[i]), i);
-  cout << endl;
+  // cout << endl;
   cout << sc << endl;
   nc = segnode(sc);
   for (i = 1; i <= nc; i = i + 1)
