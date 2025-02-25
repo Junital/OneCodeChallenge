@@ -33,10 +33,10 @@ int As_QS(int i, int j)
       i = i + 1;
     while (As[j] > x)
       j = j - 1;
-    cout << i;
-    putchar(124);
-    cout << j;
-    putchar(32);
+    // cout << i;
+    // putchar(124);
+    // cout << j;
+    // putchar(32);
     if (i <= j)
     {
       int t;
@@ -48,7 +48,7 @@ int As_QS(int i, int j)
     }
   }
 
-  cout << endl;
+  // cout << endl;
 
   if (i < r)
     As_QS(i, r);
@@ -175,17 +175,14 @@ int ANS;
 
 int travel(int cur, int L, int R, int l, int r, int x)
 {
-  // putchar(65);
-  // putchar(32);
-  // cout << L;
-  // putchar(32);
-  // cout << R << endl;
-
-  // putchar(66);
-  // putchar(32);
-  // cout << l;
-  // putchar(32);
-  // cout << r << endl;
+  cout << L;
+  putchar(124);
+  cout << R;
+  putchar(124);
+  cout << l;
+  putchar(124);
+  cout << r;
+  putchar(32);
 
   if ((L == l) && (R == r))
   {
@@ -329,12 +326,12 @@ int main(int argc, char *argv[])
     As[i] = A[i];
   As_QS(1, N);
 
-  for (i = 1; i <= N; i = i + 1)
-  {
-    cout << As[i];
-    putchar(32);
-  }
-  cout << endl;
+  // for (i = 1; i <= N; i = i + 1)
+  // {
+  //   cout << As[i];
+  //   putchar(32);
+  // }
+  // cout << endl;
 
   cout << ANS << endl;
 
@@ -380,7 +377,10 @@ int main(int argc, char *argv[])
     // putchar(32);
     // cout << r << endl;
     if (l < r)
+    {
       travel(sroot[i - 1], 1, N, l, r - 1, i);
+      cout << endl;
+    }
   }
   sap_initialize();
   ANS = ANS - sap();
