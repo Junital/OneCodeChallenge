@@ -159,6 +159,8 @@ int partner(int x)
 int regi(int u, int v, int w)
 {
   ec = ec + 1;
+  cout << ec;
+  putchar(32);
   e[ec] = v;
   cp[ec] = w;
   enxt[ec] = head[u];
@@ -175,17 +177,10 @@ int ANS;
 
 int travel(int cur, int L, int R, int l, int r, int x)
 {
-  cout << L;
-  putchar(124);
-  cout << R;
-  putchar(124);
-  cout << l;
-  putchar(124);
-  cout << r;
-  putchar(32);
-
   if ((L == l) && (R == r))
   {
+    // cout << ec;
+    // putchar(32);
     directed(point_lv_2(x), segnode(cur), INF);
     return 0;
   }
