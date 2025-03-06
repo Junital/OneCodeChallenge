@@ -1,6 +1,6 @@
 # OneCodeChallenge
 
-Hi, I'm Junital. This repository is designed for challenging myself, in which I will try to code problems in CodeForce, [Luogu](www.luogu.com.cn), Nowcoder and LeetCoder everyday😆. Now I have coded for $\times 428$ days.
+Hi, I'm Junital. This repository is designed for challenging myself, in which I will try to code problems in CodeForce, [Luogu](www.luogu.com.cn), Nowcoder and LeetCoder everyday😆. Now I have coded for $\times 429$ days.
 
 ## Update
 
