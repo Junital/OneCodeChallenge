@@ -1,0 +1,136 @@
+8
+1 2
+3 4
+5 6
+7 8
+
+#include<iostream>
+#include<cstdio>
+using namespace std;
+
+int cube[2][2][2];  
+int t_cube[2][2][2]; 
+int layer_sum[2];    
+int face_sum[3][2];  
+int maxv, minv;   
+
+int L, R, C, S, E, M, X, N, B, D, O, P, T, Y, Z;  
+
+int put_(int c){return putchar(c);}
+int putsp(){return put_(32);}
+int puteq(){return put_(61);}
+int putnl(){return put_(10);}
+
+int input_cube(){
+    int i, j, k;
+    for(k=0;k<2;k=k+1){
+        for(i=0;i<2;i=i+1){
+            for(j=0;j<2;j=j+1){
+                cin >> cube[k][i][j];
+            }
+        }
+    }
+
+    put_(67);put_(66);putsp();puteq();
+    put_(L);
+    for(k=0;k<2;k=k+1){
+        put_(L);
+        for(i=0;i<2;i=i+1){
+            put_(L);
+            cout << cube[k][i][0];putsp();
+            cout << cube[k][i][1];
+            if(i) 0; else put_(R);
+            if(i) put_(R); else put_(44);
+        }
+        if(k) 0; else put_(R);
+        if(k) put_(R); else put_(44);
+    }
+    putnl();
+    return 0;
+}
+
+int process(){
+    maxv=minv=cube[0][0][0];
+    
+    int i, j, k;
+    for(k=0;k<2;k=k+1)
+        for(i=0;i<2;i=i+1)
+            for(j=0;j<2;j=j+1){
+                t_cube[j][i][k] = cube[k][i][j];
+                if(cube[k][i][j]>maxv) maxv=cube[k][i][j]; else 0;
+                if(cube[k][i][j]<minv) minv=cube[k][i][j]; else 0;
+            }
+    
+    layer_sum[0]=cube[0][0][0]+cube[0][0][1]+cube[0][1][0]+cube[0][1][1];
+    layer_sum[1]=cube[1][0][0]+cube[1][0][1]+cube[1][1][0]+cube[1][1][1];
+    
+    face_sum[0][0]=cube[0][0][0]+cube[0][1][0]+cube[1][0][0]+cube[1][1][0];
+    face_sum[0][1]=cube[0][0][1]+cube[0][1][1]+cube[1][0][1]+cube[1][1][1];
+    face_sum[1][0]=cube[0][0][0]+cube[0][0][1]+cube[1][0][0]+cube[1][0][1];
+    face_sum[1][1]=cube[0][1][0]+cube[0][1][1]+cube[1][1][0]+cube[1][1][1];
+    face_sum[2][0]=cube[0][0][0]+cube[0][0][1]+cube[0][1][0]+cube[0][1][1];
+    face_sum[2][1]=cube[1][0][0]+cube[1][0][1]+cube[1][1][0]+cube[1][1][1];
+    
+    return 0;
+}
+
+int display(){
+    int i, j, k;
+    put_(67);put_(66);putsp();puteq();
+    put_(L);
+    for(k=0;k<2;k=k+1){
+        put_(L);
+        for(i=0;i<2;i=i+1){
+            put_(L);
+            cout << cube[k][i][0];putsp();
+            cout << cube[k][i][1];
+            if(i) 0; else put_(R);
+            if(i) put_(R); else put_(44);
+        }
+        if(k) 0; else put_(R);
+        if(k) put_(R); else put_(44);
+    }
+    putnl();
+    
+    put_(84);put_(67);putsp();puteq();
+    put_(L);
+    for(k=0;k<2;k=k+1){
+        put_(L);
+        for(i=0;i<2;i=i+1){
+            put_(L);
+            cout << t_cube[k][i][0];putsp();
+            cout << t_cube[k][i][1];
+            if(i) 0; else put_(R);
+            if(i) put_(R); else put_(44);
+        }
+        if(k) 0; else put_(R);
+        if(k) put_(R); else put_(44);
+    }
+    putnl();
+    
+    put_(76);put_(83);put_(C);
+    for(i=0;i<2;i=i+1){putsp(); cout << layer_sum[i];}
+    putnl();
+    
+    put_(70);put_(83);put_(C);
+    put_(X);puteq();cout << face_sum[0][0]+face_sum[0][1];
+    put_(Y);puteq();cout << face_sum[1][0]+face_sum[1][1];
+    put_(Z);puteq();cout << face_sum[2][0]+face_sum[2][1];
+    putnl();
+    
+    put_(77);put_(88);puteq();cout << maxv;
+    put_(77);put_(78);puteq();cout << minv;
+    putnl();
+}
+
+int main()
+{
+    L=91; R=93; C=67; S=83; E=69; M=77; Y=89;
+    X=88; N=78; B=66; D=68; O=79; P=80; T=84; Z=90;
+
+    input_cube();
+    process();
+    display();
+    return 0;
+}
+
