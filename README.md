@@ -19,6 +19,7 @@ Here are some problems which I attached solving pictures:
 
 | Problems                                                | How to solve?                                                                                                             |
 | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+|[P2616](https://www.luogu.com.cn/problem/P2616) | ![P2616 Solve](./Day438/B2616inLuogu%20Solve.svg) |
 | [P11176](https://www.luogu.com.cn/problem/P11176)       | ![P11176 Solve](./Day301-400/Day371-380/Day373/P11176%20Solve.svg)                                                                              |
 | [P7540](https://www.luogu.com.cn/problem/P7540)         | ![P7540 Solve](./Day301-400/Day341-350/Day350/P7540%20Solve.svg)                                                                     |
 | [P10520](https://www.luogu.com.cn/problem/P10520)       | Play the [game](https://core-of-banyan.github.io/) by yourself. ![core-of-banyan](./Day301-400/Day331-340/Day337/core-of-banyan.png) |
