@@ -1,11 +1,12 @@
 # OneCodeChallenge
 
-Hi, I'm Junital. This repository is designed for challenging myself, in which I will try to code problems in CodeForce, [Luogu](www.luogu.com.cn), Nowcoder and LeetCoder everyday😆. Now I have coded for $\times 447$ days.
+Hi, I'm Junital. This repository is designed for challenging myself, in which I will try to code problems in CodeForce, [Luogu](www.luogu.com.cn), Nowcoder and LeetCoder everyday😆. Now I have coded for $\times 449$ days.
 
 ## Update
 
-- **2025/3/19**: 🎉🎉Success at last! I've developed a small C++ compiler and interpreter to solve problem P11738 on [Luogu](https://www.luogu.com.cn/problem/P11738)!
-- **2025/2/16**: 🔥🔥Trying to deal with a [problem](https://www.luogu.com.cn/problem/P11738) with difficulty `NOI/NOI+/CTSC`, it's time to challenge myself.
+- **2025/3/26**: 🤔🤔Resolved a dynamic programming [problem](./Day449/P7566inLuogu.cpp). This problem is an excellent resource for enhancing spatial comprehension skills within the context of programming challenges.
+- **2025/3/19**: 🎉🎉Success at last! I've developed a small C++ compiler and interpreter to solve problem [P11738](./Day442/P11738inLuogu.cpp) on [Luogu](https://www.luogu.com.cn/problem/P11738)!
+- **2025/2/16**: 🔥🔥选择场合：Facing the challenge of [problem](https://www.luogu.com.cn/problem/P11738) rated at the `NOI/NOI+/CTSC` difficulty level, it's an opportune moment to put my skills to the test.
 
 ## Problem Levels
 
@@ -20,7 +21,8 @@ Here are some problems which I attached solving pictures:
 
 | Problems                                                | How to solve?                                                                                                             |
 | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-|[P2614](https://www.luogu.com.cn/problem/P2612) | ![P2614 Solve](./Day441/B2614%20Solve.svg) |
+|[P7566](https://www.luogu.com.cn/problem/P7566) | ![P7566 Solve](./Day449/P7566%20Solve.png) |
+|[P2614](https://www.luogu.com.cn/problem/P2614) | ![P2614 Solve](./Day441/B2614%20Solve.svg) |
 |[P2612](https://www.luogu.com.cn/problem/P2612) | ![P2612 Solve](./Day431-440/Day440/B2612%20Solve.svg) |
 |[P2616](https://www.luogu.com.cn/problem/P2616) | ![P2616 Solve](./Day431-440/Day438/B2616inLuogu%20Solve.svg) |
 | [P11176](https://www.luogu.com.cn/problem/P11176)       | ![P11176 Solve](./Day301-400/Day371-380/Day373/P11176%20Solve.svg)                                                                              |
