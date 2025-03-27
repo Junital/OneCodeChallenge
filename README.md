@@ -6,7 +6,7 @@ Hi, I'm Junital. This repository is designed for challenging myself, in which I 
 
 - **2025/3/26**: 🤔🤔Resolved a dynamic programming [problem](./Day449/P7566inLuogu.cpp). This problem is an excellent resource for enhancing spatial comprehension skills within the context of programming challenges.
 - **2025/3/19**: 🎉🎉Success at last! I've developed a small C++ compiler and interpreter to solve problem [P11738](./Day442/P11738inLuogu.cpp) on [Luogu](https://www.luogu.com.cn/problem/P11738)!
-- **2025/2/16**: 🔥🔥选择场合：Facing the challenge of [problem](https://www.luogu.com.cn/problem/P11738) rated at the `NOI/NOI+/CTSC` difficulty level, it's an opportune moment to put my skills to the test.
+- **2025/2/16**: 🔥🔥Facing the challenge of [problem](https://www.luogu.com.cn/problem/P11738) rated at the `NOI/NOI+/CTSC` difficulty level, it's an opportune moment to put my skills to the test.
 
 ## Problem Levels
 
