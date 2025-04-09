@@ -1626,7 +1626,9 @@ public:
 
 int main(int argc, char *argv[])
 {
-#ifndef ONLINE_JUDGE
+#ifdef ONLINE_JUDGE
+    freopen(argc == 1 ? "input.in" : argv[1], "r", stdin); // 自己调试用
+#else
     freopen(argc == 1 ? "input.txt" : argv[1], "r", stdin); // 自己调试用
 #endif
 
