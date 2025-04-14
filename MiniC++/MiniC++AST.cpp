@@ -73,26 +73,6 @@ namespace Compile
         string value;
     };
 
-    const set<TokenType> OPERATORS = {
-        T_LPAREN,
-        T_RPAREN,
-        T_NOT,
-        T_PLUS,
-        T_MINUS,
-        T_MUL,
-        T_DIV,
-        T_MOD,
-        T_GE,
-        T_GT,
-        T_LE,
-        T_LT,
-        T_EQ,
-        T_NE,
-        T_XOR,
-        T_AND,
-        T_OR,
-        T_ASSIGN};
-
     class Lexer
     {
     public:
@@ -485,19 +465,104 @@ namespace Compile
 
 using namespace Compile;
 
+namespace AST
+{
+    class ExprNode;
+    using PrefixFn = function<unique_ptr<ExprNode>(const Token &)>;
+    using InfixFn = function<unique_ptr<ExprNode>(unique_ptr<ExprNode>, const Token &)>;
+    using PostfixFn = function<unique_ptr<ExprNode>(unique_ptr<ExprNode>, const Token &)>;
+
+    // 基类 ExprNode
+    class ExprNode
+    {
+    public:
+        virtual std::string toString() const
+        {
+            throw std::runtime_error("not implemented");
+        }
+        virtual ~ExprNode() = default;
+    };
+
+    // ValueNode 类
+    class ValueNode : public ExprNode
+    {
+    private:
+        int val;
+
+    public:
+        ValueNode(int val) : val(val) {}
+
+        std::string toString() const override
+        {
+            return std::to_string(val);
+        }
+    };
+
+    // PrefixOpNode 类
+    class PrefixOpNode : public ExprNode
+    {
+    private:
+        PrefixOp op;
+        unique_ptr<ExprNode> *rhs;
+
+    public:
+        PrefixOpNode(const string &op, unique_ptr<ExprNode> rhs) : op(op), rhs(move(rhs)) {}
+
+        std::string toString() const override
+        {
+            return "(" + op + rhs->toString() + ")";
+        }
+    };
+
+    // InfixOpNode 类
+    class InfixOpNode : public ExprNode
+    {
+    private:
+        string op;
+        unique_ptr<ExprNode> lhs;
+        unique_ptr<ExprNode> rhs;
+
+    public:
+        InfixOpNode(const string &op, unique_ptr<ExprNode> lhs, unique_ptr<ExprNode> rhs) : op(op), lhs(move(lhs)), rhs(move(rhs)) {}
+
+        std::string toString() const override
+        {
+            return "(" + lhs->toString() + op + rhs->toString() + ")";
+        }
+    };
+
+    // PostfixOpNode 类
+    class PostfixOpNode : public ExprNode
+    {
+    private:
+        PostfixOp op;
+        unique_ptr<ExprNode> lhs;
+
+    public:
+        PostfixOpNode(const string &op, unique_ptr<ExprNode> lhs) : op(op), lhs(lhs) {}
+
+        std::string toString() const override
+        {
+            return "(" + lhs->toString() + op + ")";
+        }
+    };
+};
+
+using namespace AST;
 class Interpreter
 {
 private:
-    vector<int> Inputs;               // 输入数字
-    int InputIdx;                     // 输入索引
-    map<string, Function> Funcs;      // 函数
-    vector<Token> Tokens;             // 所有Token
-    int TokenIdx;                     // Token索引
-    VariableStack vs;                 // 变量内存栈
-    stack<stack<Token>> Nums;         // 所有INT变量
-    stack<stack<Token>> Ops;          // 所有操作符
-    stack<map<string, int *>> RefMap; // 变量引用映射
-    stack<int> BraceCnt;              // 记录大括号数量（因为可能在{}里突然return）
+    vector<int> Inputs;                                 // 输入数字
+    int InputIdx;                                       // 输入索引
+    map<string, Function> Funcs;                        // 函数
+    vector<Token> Tokens;                               // 所有Token
+    int TokenIdx;                                       // Token索引
+    VariableStack vs;                                   // 变量内存栈
+    stack<map<string, int *>> RefMap;                   // 变量引用映射
+    stack<int> BraceCnt;                                // 记录大括号数量（因为可能在{}里突然return）
+    unordered_map<TokenType, PrefixFn> prefixParsers;   // 前缀运算符函数集合
+    unordered_map<TokenType, InfixFn> infixParsers;     // 中缀运算符函数集合
+    unordered_map<TokenType, PostfixFn> postfixParsers; // 后缀运算符函数集合
 
     /* 获取目前位置的变量。 */
     pair<string, vector<int>> get_variable()
@@ -936,6 +1001,56 @@ private:
                 throw invalid_argument("Unknown token " + top_op.value + " in calculator.");
             }
         }
+    }
+
+    /* 解析表达式。 */
+    unique_ptr<ExprNode> parse_expression(int prec = 0)
+    {
+        const Token &token = Tokens[TokenIdx++];
+
+        auto prefixIt = prefixParsers.find(token.type);
+        if (prefixIt == prefixParsers.end())
+        {
+            throw std::runtime_error("Unexpected prefix token");
+        }
+
+        unique_ptr<ExprNode> lhs = prefixIt->second(token);
+        int precRight = OpLevel(Tokens[TokenIdx]);
+
+        while (prec < precRight)
+        {
+            const Token &token = Tokens[TokenIdx++];
+            InfixFn infixParser;
+            PostfixFn postfixParser;
+
+            auto infixIt = infixParsers.find(token.type);
+            auto postfixIt = postfixParsers.find(token.type);
+
+            if (infixIt != infixParsers.end())
+            {
+                infixParser = infixIt->second;
+            }
+            else if (postfixIt != postfixParsers.end())
+            {
+                postfixParser = postfixIt->second;
+            }
+            else
+            {
+                throw std::runtime_error("Unexpected infix or postfix token");
+            }
+
+            if (infixParser)
+            {
+                lhs = infixParser(move(lhs), token);
+            }
+            else
+            {
+                lhs = postfixParser(move(lhs), token);
+            }
+            precRight = OpLevel(Tokens[TokenIdx]);
+        }
+
+        retun lhs;
     }
 
     /* 运行一个表达式。 */
@@ -1611,6 +1726,107 @@ public:
         Lexer lexer(code);
 
         Tokens = lexer.get_tokens();
+
+        /* 定义所有操作函数。 */
+        prefixParsers[TokenType::T_INT_CONSTANT] = [this](const Token &token)
+        { return make_unique<ValueNode>(stoi(token.value)); };
+        prefixParsers[TokenType::T_PLUS] = [this](const Token &token)
+        { return make_unique<PrefixOpNode>("+", this->parse_expression(this->OpLevel({T_PLUS, "&+"}))); };
+        prefixParsers[TokenType::T_MINUS] = [this](const Token &token)
+        { return make_unique<PrefixOpNode>("-", this->parse_expression(this->OpLevel({T_MINUS, "&-"}))); };
+        prefixParsers[TokenType::T_LPAREN] = [this](const Token &token)
+        {
+            auto expr = this->parse_expression(0);
+            const Token &next = Tokens[TokenIdx++];
+            if (next.type != TokenType::RPa)
+            {
+                throw std::runtime_error("Expected )");
+            }
+            return expr;
+        };
+        prefixParsers[TokenType::T_IDENTIFIER] = [this](const Token &token)
+        {
+            if (Tokens[i].type == T_IDENTIFIER)
+            {
+                /* 函数情况 */
+                if (i + 1 <= end_pos &&
+                    Tokens[i + 1].type == T_LPAREN)
+                {
+                    string func_name = Tokens[i].value;
+                    vector<int> args;
+                    i += 2;
+                    int brace_cnt = 1;
+
+                    while (brace_cnt > 0)
+                    {
+                        int begin = i;
+                        while (Tokens[i].type != T_COMMA &&
+                               brace_cnt > 0)
+                        {
+                            if (Tokens[i].type == T_LPAREN)
+                            {
+                                brace_cnt++;
+                            }
+                            else if (Tokens[i].type == T_RPAREN)
+                            {
+                                brace_cnt--;
+                            }
+                            if (brace_cnt > 0)
+                            {
+                                i++;
+                            }
+                        }
+
+                        int end = i - 1;
+
+                        if (end >= begin)
+                        {
+                            args.push_back(run_expression(begin, end));
+                        }
+
+                        if (Tokens[i].type == T_COMMA)
+                        {
+                            i++;
+                        }
+                    }
+
+                    /* 特殊函数putchar */
+                    if (func_name == "putchar" && (int)args.size() == 1)
+                    {
+                        Nums.top().push({T_INT_CONSTANT, to_string(putchar(args[0]))});
+                    }
+                    else
+                    {
+                        int temp_idx = TokenIdx;
+                        int return_num = run_function(func_name, args);
+                        Nums.top().push({T_INT_CONSTANT, to_string(return_num)});
+                        TokenIdx = temp_idx;
+                        assert(!Nums.top().empty());
+                    }
+                }
+                /* 变量情况 */
+                else
+                {
+                    int temp = TokenIdx;
+                    TokenIdx = i + 1;
+                    auto res = get_variable();
+                    i = TokenIdx - 2;
+                    TokenIdx = temp;
+
+                    string var_str = to_variable_string(res);
+                    int *ref = vs.get_ref(res.first, res.second);
+                    assert(!RefMap.empty());
+                    // cout << var_str << " " << *ref << endl;
+                    RefMap.top()[var_str] = ref;
+
+                    Nums.top().push({T_IDENTIFIER,
+                                     var_str});
+                }
+            }
+        };
+
+        infixParsers[TokenType::T_PLUS] = [this](unique_ptr<ExprNode> lhs, const Token &token)
+        { return; }
     }
 
     /* 运行。 */
