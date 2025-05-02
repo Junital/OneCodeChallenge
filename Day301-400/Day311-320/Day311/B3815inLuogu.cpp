@@ -12,6 +12,7 @@ using namespace std;
 
 #define rep(i, s, k) for (int i = s; i <= k; i++) // 定义快速循环
 
+/* 双向映射 */
 template <typename Type>
 class BiMap
 {
