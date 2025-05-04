@@ -1,9 +1,10 @@
 # OneCodeChallenge
 
-Hi, I'm Junital. This repository is designed for challenging myself, in which I will try to code problems in CodeForce, [Luogu](www.luogu.com.cn), Nowcoder and LeetCoder everyday😆. Now I have coded for $\times 486$ days.
+Hi, I'm Junital. This repository is designed for challenging myself, in which I will try to code problems in CodeForce, [Luogu](www.luogu.com.cn), Nowcoder and LeetCoder everyday😆. Now I have coded for $\times 488$ days.
 
 ## Update
 
+- **2025/5/2**: 💪💪I embarked on the journey of learning the Kotlin language for programming. It's truly a challenging yet exciting endeavor.
 - **2025/3/26**: 🤔🤔Resolved a dynamic programming [problem](./Day441-450/Day449/P7566inLuogu.cpp). This problem is an excellent resource for enhancing spatial comprehension skills within the context of programming challenges.
 - **2025/3/19**: 🎉🎉Success at last! I've developed a small C++ compiler and interpreter to solve problem [P11738](./Day441-450/Day442/P11738inLuogu.cpp) on [Luogu](https://www.luogu.com.cn/problem/P11738)!
 - **2025/2/16**: 🔥🔥Facing the challenge of [problem](https://www.luogu.com.cn/problem/P11738) rated at the `NOI/NOI+/CTSC` difficulty level, it's an opportune moment to put my skills to the test.
