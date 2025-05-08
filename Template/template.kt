@@ -25,6 +25,14 @@ private fun next(): String {
 // 读取一个 Int
 private fun nextInt(): Int = next().toInt()
 
+/**
+ * 把 Pair<A,B> 转成 "$first<sep>$second" 的字符串
+ */
+fun <A, B> Pair<A, B>.joinToString(
+    separator: CharSequence = ", "
+): String = listOf(first, second)
+    .joinToString(separator) { it.toString() }
+
 fun main(args: Array<String>) {
     
 }
