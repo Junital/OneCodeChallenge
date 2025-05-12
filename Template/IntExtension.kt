@@ -1,0 +1,30 @@
+package com.Junital.utils
+
+/**
+* 枚举所有正因数。
+*/
+fun Int.divisors(): List<Int> {
+    require(this > 0) { "Only positive integers are supported." }
+    val n = this
+    val limit = sqrt(n.toDouble()).toInt()
+    return buildList {
+        for (i in 1..limit) {
+            if (n % i == 0) {
+                add(i)
+                val other = n / i
+                if (other != i) add(other)
+            }
+        }
+    }
+}
+
+/**
+ * 计算所有正因数之和。
+ */
+fun Int.sumOfDivisors(): Int = divisors().sum()
+
+/**
+ * 将整型拆成数字字符数组。
+ */
+fun Int.toDigitList(): List<Int> =
+    this.absoluteValue.toString().map { it - '0' }
