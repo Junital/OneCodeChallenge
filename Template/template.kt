@@ -25,6 +25,9 @@ private fun next(): String {
 // 读取一个 Int
 private fun nextInt(): Int = next().toInt()
 
+// 读取一个 Double
+private fun nextDouble(): Double = next().toDouble()
+
 /**
  * 把 Pair<A,B> 转成 "$first<sep>$second" 的字符串
  */
