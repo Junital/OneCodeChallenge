@@ -28,6 +28,9 @@ private fun nextInt(): Int = next().toInt()
 // 读取一个 Double
 private fun nextDouble(): Double = next().toDouble()
 
+// 读取一个 Char
+private fun nextChar(): Char = next().first()
+
 /**
  * 把 Pair<A,B> 转成 "$first<sep>$second" 的字符串
  */
