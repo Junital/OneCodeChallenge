@@ -1,0 +1,30 @@
+10
+9
+6 1 7 5 1 7 2 2 4
+#include<iostream>
+#include<cstdio>
+using namespace std;
+int n, a[100];
+
+
+int main()
+{
+    cin >> n;
+    int i, j, this_VARIABLE_is_NOT_used;
+    for (i = 1; i <= n; i = i + 1) cin >> a[i];
+    for (i = 1; i <= n; i = i + 1)
+    for (j = i + 1; j <= n; j = j + 1)
+    if (a[i] > a[j])
+    {
+        int t;
+        t = a[i];
+        a[i] = a[j];
+        a[j] = t;
+    }
+    for (i = 1; i <= n; i = i + 1)
+    {
+        cout << a[i];
+        if (i == n) cout << endl; else putchar(32);
+    }
+    return 0;
+}

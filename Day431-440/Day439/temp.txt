@@ -1,2 +1,0 @@
-int int cin int for { int int cin if if { str str str str str str print_str int i while { putchar Ai } { putchar li } { putchar ii } { putchar ci } { putchar ei } } put_nl return
-} }
