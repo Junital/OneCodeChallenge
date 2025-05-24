@@ -25,6 +25,9 @@ private fun next(): String {
 // 读取一个 Int
 private fun nextInt(): Int = next().toInt()
 
+// 读取一个 Long
+private fun nextLong(): Long = next().toLong()
+
 // 读取一个 Double
 private fun nextDouble(): Double = next().toDouble()
 
