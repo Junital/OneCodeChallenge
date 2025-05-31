@@ -42,30 +42,37 @@ fun <A, B> Pair<A, B>.joinToString(
 ): String = listOf(first, second)
     .joinToString(separator) { it.toString() }
 
+fun countTriples(arr: IntArray): Long {
+    var cnt = 0L
+    // freq 存放前缀 [0..y-1] 中各数出现的次数
+    val freq = mutableMapOf<Int, Int>()
+    for (z in arr.indices) {
+        // 对每个 z，遍历 y 从 0..z-1
+        for (y in 0 until z) {
+            // 想要 arr[x] = arr[z] - arr[y]
+            val need = arr[z] - arr[y]
+
+            // 然后把 arr[y] 记入 freq，供后续 y+1..z-1 用
+            freq[arr[y]] = freq.getOrDefault(arr[y], 0) + 1
+
+            // 累加在 [0..y-1] 中出现 need 的次数
+            cnt += freq.getOrDefault(need, 0)
+        }
+        // 清空 freq，为下一个 z 重置前缀
+        freq.clear()
+    }
+    return cnt
+}
+
 fun main(args: Array<String>) {
     val queryNum = nextInt()
 
-    for(i in 1..queryNum)
-    {
-        val size = nextInt()
-        val arr = MutableList(size) { nextInt() }
-        var cnt = 0
-
-        for(x in 0 until size)
-        {
-            for(y in x until size)
-            {
-                for(z in y + 1 until size)
-                {
-                    if(arr[x] + arr[y] == arr[z])
-                    {
-                        // println("$x $y $z")
-                        cnt++
-                    }
-                }
-            }
-        }
-
-        println(cnt)
+    repeat(queryNum) {
+        val n = nextInt()
+        // 读入数组
+        val arr = IntArray(n) { nextInt() }
+        // 计数
+        val ans = countTriples(arr)
+        println(ans)
     }
 }
