@@ -25,6 +25,13 @@ private fun next(): String {
 // 读取一个 Int
 private fun nextInt(): Int = next().toInt()
 
+/**
+ * 批量读取 n 个 Int，返回 List<Int>
+ * 可以和解构声明一起使用：
+ * val (x,y,z,w) = nextInts(4)
+ */
+fun nextInts(n: Int): List<Int> = List(n) { nextInt() }
+
 // 读取一个 Long
 private fun nextLong(): Long = next().toLong()
 

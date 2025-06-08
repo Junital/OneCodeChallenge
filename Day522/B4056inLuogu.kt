@@ -42,6 +42,23 @@ fun <A, B> Pair<A, B>.joinToString(
 ): String = listOf(first, second)
     .joinToString(separator) { it.toString() }
 
+/**
+ * 返回第一个大于 value 的位置（若都 ≤ value 则返回 size）。
+ */
+fun <T : Comparable<T>> List<T>.upperBound(value: T): Int {
+    // binarySearch 找到 value 时返回某个 idx；找不到时返回 insertionPoint = -idx-1
+    val idx = this.binarySearch(value)
+    return if (idx >= 0) {
+        // 如果正好命中一个 value，还要往右跳过所有相等的元素
+        var i = idx + 1
+        while (i < size && this[i] == value) i++
+        i
+    } else {
+        // 如果没命中，-idx-1 本身就是第一个 > value 的插入点
+        -idx - 1
+    }
+}
+
 class BuyCards(val cardNum: Int, val packNum: Int){
     
     val cards = MutableList<MutableList<Int>>(packNum) { MutableList<Int>(cardNum) { nextInt() } }
@@ -51,10 +68,12 @@ class BuyCards(val cardNum: Int, val packNum: Int){
         val record = MutableList<Int>(cardNum) {0}
 
         for(i in 1..packNum){
-            val consume = cards[i - 1].filter { it <= left }.maxOrNull() ?: 0
-            left -= consume
+            cards[i - 1].sort()
+            val idx = cards[i - 1].upperBound(left) - 1
 
-            if(consume != 0){
+            if(idx >= 0){
+                val consume = cards[i - 1][idx]
+                left -= consume
                 record[consume - 1]++
             }
         }
