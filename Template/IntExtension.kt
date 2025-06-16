@@ -28,3 +28,10 @@ fun Int.sumOfDivisors(): Int = divisors().sum()
  */
 fun Int.toDigitList(): List<Int> =
     this.absoluteValue.toString().map { it - '0' }
+
+
+/**
+ * 向上整除：a / b，如果有余数则结果再加 1
+ */
+fun Int.divUp(b: Int): Int =
+    this / b + if (this % b != 0) 1 else 0
