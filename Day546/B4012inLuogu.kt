@@ -62,12 +62,12 @@ fun main(args: Array<String>) {
             }
         }
 
-        if(dailyCnt >= peopleNum / 2){
+        if(dailyCnt >= (peopleNum + 1) / 2){
             totalCnt++
         }
     }
 
-    if(totalCnt >= dayNum / 2){
+    if(totalCnt >= (dayNum + 1) / 2){
         println("YES")
     }else{
         println("NO")
