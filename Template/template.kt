@@ -35,6 +35,13 @@ fun nextInts(n: Int): List<Int> = List(n) { nextInt() }
 // 读取一个 Long
 private fun nextLong(): Long = next().toLong()
 
+/**
+ * 批量读取 n 个 Long，返回 List<Long>
+ * 可以和解构声明一起使用：
+ * val (x,y,z,w) = nextLongs(4)
+ */
+fun nextLongs(n: Int): List<Long> = List(n) { nextLong() }
+
 // 读取一个 Double
 private fun nextDouble(): Double = next().toDouble()
 
