@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "d:/D/xiaochengxu/cpp/dev/OneCodeChallenge/Template",
-      "program": "d:/D/xiaochengxu/cpp/dev/OneCodeChallenge/Template/build/Debug/outDebug",
+      "cwd": "d:/D/xiaochengxu/cpp/dev/OneCodeChallenge/TenDrops",
+      "program": "d:/D/xiaochengxu/cpp/dev/OneCodeChallenge/TenDrops/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
