@@ -52,3 +52,22 @@ fun <T : Comparable<T>> List<T>.upperBound(value: T): Int {
         -idx - 1
     }
 }
+
+/**
+ * 操作函数，输出所有可能的结果。
+ */
+fun <A, B, R> operate(
+    setA: Collection<A>,
+    setB: Collection<B>,
+    functions: Collection<(A, B) -> R>
+): List<R> {
+    val results = mutableListOf<R>()
+    for (a in setA) {
+        for (b in setB) {
+            for (f in functions) {
+                results.add(f(a, b))
+            }
+        }
+    }
+    return results
+}
