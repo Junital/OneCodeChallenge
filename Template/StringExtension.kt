@@ -75,3 +75,15 @@ fun String.replaceWord(
     val options = if (ignoreCase) setOf(RegexOption.IGNORE_CASE) else emptySet()
     return this.replace(Regex(pattern, options), replacement)
 }
+
+/**
+ * 判断字符串是否是回文（忽略大小写和非字母数字字符）。
+ */
+fun String.isPalindrome(): Boolean {
+    // 只保留字母和数字，并统一为小写
+    val sanitized = this
+        .filter { it.isLetterOrDigit() }
+        .lowercase()
+    // 与反转后的字符串比较
+    return sanitized == sanitized.reversed()
+}
