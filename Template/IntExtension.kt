@@ -53,3 +53,11 @@ fun Int.fractionalDigits(divisor: Int, vararg positions: Int): List<Int> {
         digits[pos - 1]
     }
 }
+
+/**
+ * 判断一个整数的每一位数字是否都相同（字符串方式）
+ */
+fun allDigitsSame(n: Int): Boolean {
+    val s = n.absoluteValue.toString()
+    return s.all { it == s[0] }
+}
