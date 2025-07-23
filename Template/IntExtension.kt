@@ -30,6 +30,12 @@ fun Int.toDigitList(): List<Int> =
     this.absoluteValue.toString().map { it - '0' }
 
 /**
+ * 获取整形各位之和。
+ */
+fun Int.getDigitSum(): Int =
+    this.toDigitList().sum()
+
+/**
  * 向上整除：a / b，如果有余数则结果再加 1
  */
 fun Int.divUp(b: Int): Int =
@@ -57,7 +63,7 @@ fun Int.fractionalDigits(divisor: Int, vararg positions: Int): List<Int> {
 /**
  * 判断一个整数的每一位数字是否都相同（字符串方式）
  */
-fun allDigitsSame(n: Int): Boolean {
-    val s = n.absoluteValue.toString()
+fun Int.allDigitsSame(): Boolean {
+    val s = this@allDigitsSame.absoluteValue.toString()
     return s.all { it == s[0] }
 }
