@@ -22,6 +22,13 @@ private fun next(): String {
     return tokenizer.nextToken()
 }
 
+/**
+ * 批量读取 n 个 String，返回 List<String>
+ * 可以和解构声明一起使用：
+ * val (x,y,z,w) = nextStrings(4)
+ */
+fun nextStrings(n: Int): List<String> = List(n) { next() }
+
 // 读取一个 Int
 private fun nextInt(): Int = next().toInt()
 
