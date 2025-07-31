@@ -8,6 +8,7 @@
 
 import java.io.BufferedReader
 import java.io.InputStreamReader
+import java.io.EOFException
 import java.util.StringTokenizer
 
 // 全局工具
@@ -20,6 +21,17 @@ private fun next(): String {
         tokenizer = StringTokenizer(reader.readLine() ?: "")
     }
     return tokenizer.nextToken()
+}
+
+/** 返回下一个非空白字符，直到读到 EOF 会抛出 EOFException */
+private fun nextChar(): Char {
+    var c = reader.read()
+    // 跳过所有空白（包括空格、换行、制表符等）
+    while (c != -1 && c.toChar().isWhitespace()) {
+        c = reader.read()
+    }
+    if (c == -1) throw EOFException("End of input")
+    return c.toChar()
 }
 
 /**
