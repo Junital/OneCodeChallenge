@@ -23,17 +23,6 @@ private fun next(): String {
     return tokenizer.nextToken()
 }
 
-/** 返回下一个非空白字符，直到读到 EOF 会抛出 EOFException */
-private fun nextChar(): Char {
-    var c = reader.read()
-    // 跳过所有空白（包括空格、换行、制表符等）
-    while (c != -1 && c.toChar().isWhitespace()) {
-        c = reader.read()
-    }
-    if (c == -1) throw EOFException("End of input")
-    return c.toChar()
-}
-
 /**
  * 批量读取 n 个 String，返回 List<String>
  * 可以和解构声明一起使用：
