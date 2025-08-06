@@ -87,3 +87,10 @@ fun String.isPalindrome(): Boolean {
     // 与反转后的字符串比较
     return sanitized == sanitized.reversed()
 }
+
+/**
+ * 过滤字符串中的指定字符
+ */
+fun filterString(str: String, chars: String): String {
+    return str.filter { !chars.contains(it) }
+}
