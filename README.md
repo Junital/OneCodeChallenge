@@ -1,6 +1,6 @@
 # OneCodeChallenge
 
-Hi, I'm Junital. This repository is designed for challenging myself, in which I will try to code problems in CodeForce, [Luogu](www.luogu.com.cn), Nowcoder and LeetCoder everyday😆. Now I have coded for $\times 585$ days.
+Hi, I'm Junital. This repository is designed for challenging myself, in which I will try to code problems in CodeForce, [Luogu](www.luogu.com.cn), Nowcoder and LeetCoder everyday😆. Now I have coded for $\times 586$ days.
 
 ## Update
 
@@ -22,6 +22,7 @@ Here are some problems which I attached solving pictures:
 
 | Problems                                                | How to solve?                                                                                                                        |
 | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| [B3895](https://www.luogu.com.cn/problem/B3895)         | ![B3895 Solve](./Day586/B3895%20Luogu.svg)                                                                                |
 | [B3905](https://www.luogu.com.cn/problem/B3905)         | ![B3905](./Day451-460/Day458/B3905%20Solve.svg)                                                                                      |
 | [P7566](https://www.luogu.com.cn/problem/P7566)         | ![P7566 Solve](./Day441-450/Day449/P7566%20Solve.png)                                                                                |
 | [P2614](https://www.luogu.com.cn/problem/P2614)         | ![P2614 Solve](./Day441-450/Day441/B2614%20Solve.svg)                                                                                |

@@ -84,7 +84,6 @@ fun splitEven(n: Int): List<Int> {
     return list
 }
 
-
 fun main(args: Array<String>) {
     val n = nextInt()
     if(n % 2 != 0) {
