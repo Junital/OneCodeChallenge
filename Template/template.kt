@@ -53,6 +53,9 @@ fun nextLongs(n: Int): List<Long> = List(n) { nextLong() }
 // 读取一个 Double
 private fun nextDouble(): Double = next().toDouble()
 
+// 读取n个Double
+fun nextDoubles(n: Int): List<Double> = List(n) { nextDouble() }
+
 // 读取一个 Char
 private fun nextChar(): Char = next().first()
 
