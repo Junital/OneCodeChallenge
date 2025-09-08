@@ -26,3 +26,33 @@ fun <A, B, R> operate(
     }
     return results
 }
+
+/**
+ * 循环数组
+ */
+class CircularArray<T>(private val array: Array<T>) {
+    private val n = array.size
+    private var index = 0
+    private var head = 0
+    fun init() {
+        index = 0
+    }
+
+    fun next() {
+        index = (index + 1) % n
+    }
+    fun get() = array[index]
+    fun getByIdx(idx: Int) = array[(head + idx) % n]
+
+    fun print() {
+        for (i in 0 until n) {
+            print("${getByIdx(i)} ")
+        }
+        println()
+    }
+
+    fun rotate() {
+        head = (head - 1 + n) % n
+        index = head
+    }
+}
